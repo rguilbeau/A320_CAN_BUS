@@ -18,19 +18,21 @@ var CANBUS_FRAMES = [
             {
                 value: 'SSSSS',
                 info: [
-                    '10000 - vitesse + 100 knots',
-                    '01000 - vitesse + 200 knots',
-                    '00100 - vitesse + 300 knots',
-                    '00010 - vitesse + 400 knots',
-                    '00001 - vitesse + 500 knots'
+                    "Centaine d'unité de la vitesse",
+                    '10000 - SSSSSSSS + 100 knots',
+                    '01000 - SSSSSSSS + 200 knots',
+                    '00100 - SSSSSSSS + 300 knots',
+                    '00010 - SSSSSSSS + 400 knots',
+                    '00001 - SSSSSSSS + 500 knots'
                 ]
             },
             {
                 value: 'HHH ',
                 info: [
-                    '100 - cap + 100°',
-                    '010 - cap + 200°',
-                    '001 - cap + 300°'
+                    "Centaine d'untité du cap",
+                    '100 - HHHHHHHH + 100°',
+                    '010 - HHHHHHHH + 200°',
+                    '001 - HHHHHHHH + 300°'
                 ]
             },
             {
@@ -66,15 +68,15 @@ var CANBUS_FRAMES = [
                 info: ['0 - Vitesse verticale négative, 1 - vitesse verticale positive']
             },
             {
-                value : "AAAAAAAA AAAAAAAA ",
-                info: ["Altitude, additionner les deux bytes entre eux"]
+                value : "AAAAAAAA aaaaaaaa ",
+                info: ["Altitude, (AAAAAAAA + aaaaaaaa) * 100"]
             },
             {
                 value: 'VVVVVVVV ',
                 info: [
                     'Vitesse verticale',
-                    'Si FPA vitesse verticale / 10',
-                    'Sinon vitesse verticale * 100'
+                    'Si FPA VVVVVVVV / 10',
+                    'Sinon VVVVVVVV * 100'
                 ]
             },
             {

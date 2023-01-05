@@ -1,3 +1,9 @@
+
+.overflow-summary-table {
+    max-height: 350px;
+    overflow: auto;
+}
+
 .can-message {
     padding-bottom: 20px;
     margin-bottom: 80px;
@@ -63,3 +69,27 @@
 .can-info-offset-24 { padding-top: 480px; }
 .can-info-offset-25 { padding-top: 500px; }
 .can-info-offset-26 { padding-top: 520px; }
+.can-info-offset-27 { padding-top: 540px; }
+.can-info-offset-28 { padding-top: 560px; }
+.can-info-offset-29 { padding-top: 580px; }
+.can-info-offset-30 { padding-top: 600px; }
+.can-info-offset-31 { padding-top: 620px; }
+.can-info-offset-32 { padding-top: 640px; }
+.can-info-offset-33 { padding-top: 660px; }
+.can-info-offset-34 { padding-top: 680px; }
+.can-info-offset-35 { padding-top: 700px; }
+.can-info-offset-36 { padding-top: 720px; }
+.can-info-offset-37 { padding-top: 740px; }
+.can-info-offset-38 { padding-top: 760px; }
+.can-info-offset-39 { padding-top: 780px; }
+.can-info-offset-40 { padding-top: 800px; }
+.can-info-offset-41 { padding-top: 820px; }
+.can-info-offset-42 { padding-top: 840px; }
+.can-info-offset-43 { padding-top: 860px; }
+.can-info-offset-44 { padding-top: 880px; }
+.can-info-offset-45 { padding-top: 900px; }
+.can-info-offset-46 { padding-top: 920px; }
+.can-info-offset-47 { padding-top: 940px; }
+.can-info-offset-48 { padding-top: 960px; }
+.can-info-offset-49 { padding-top: 980px; }
+.can-info-offset-50 { padding-top: 1000px; }
