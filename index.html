@@ -1,30 +1,29 @@
 <html>
     <head>
-    <title>PSA CAN</title>
+    <title>A320 Documentation - CAN Bus</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <style type="text/css">
-.message {
+.can-message {
 padding-bottom: 20px;
 margin-bottom: 80px;
     font-size: 15px;
     line-height: 1.34;
 }
 
-.message .id {
+.can-message .can-id {
 float: left;
 margin: 0 10px;
 font-family: monospace;
-font-size: 150%;
 }
 
-.message .bits {
+.can-message .can-bits {
 float: left;
 position: relative;
 font-family: monospace;
 }
 
-.message .bits .info {
+.can-message .can-bits .can-info {
 position: absolute;
 left: 4px;
 border-left: 1px dotted #000;
@@ -33,43 +32,43 @@ padding-left: 3px;
 white-space: nowrap;
 }
 
-.message .bits:hover {
+.can-message .can-bits:hover {
 font-weight: bold;
 color: rgb(0, 153, 255);
 }
 
-.message .bits:hover .info {
+.can-message .can-bits:hover .can-info {
 border-left-style: solid;
 border-bottom-style: solid;
 border-color: rgb(0, 153, 255);
 }
 
-.offset-1 { padding-top: 20px; }
-.offset-2 { padding-top: 40px; }
-.offset-3 { padding-top: 60px; }
-.offset-4 { padding-top: 80px; }
-.offset-5 { padding-top: 100px; }
-.offset-6 { padding-top: 120px; }
-.offset-7 { padding-top: 140px; }
-.offset-8 { padding-top: 160px; }
-.offset-9 { padding-top: 180px; }
-.offset-10 { padding-top: 200px; }
-.offset-11 { padding-top: 220px; }
-.offset-12 { padding-top: 240px; }
-.offset-13 { padding-top: 260px; }
-.offset-14 { padding-top: 280px; }
-.offset-15 { padding-top: 300px; }
-.offset-16 { padding-top: 320px; }
-.offset-17 { padding-top: 340px; }
-.offset-18 { padding-top: 360px; }
-.offset-19 { padding-top: 380px; }
-.offset-20 { padding-top: 400px; }
-.offset-21 { padding-top: 420px; }
-.offset-22 { padding-top: 440px; }
-.offset-23 { padding-top: 460px; }
-.offset-24 { padding-top: 480px; }
-.offset-25 { padding-top: 500px; }
-.offset-26 { padding-top: 520px; }
+.can-info-offset-1 { padding-top: 20px; }
+.can-info-offset-2 { padding-top: 40px; }
+.can-info-offset-3 { padding-top: 60px; }
+.can-info-offset-4 { padding-top: 80px; }
+.can-info-offset-5 { padding-top: 100px; }
+.can-info-offset-6 { padding-top: 120px; }
+.can-info-offset-7 { padding-top: 140px; }
+.can-info-offset-8 { padding-top: 160px; }
+.can-info-offset-9 { padding-top: 180px; }
+.can-info-offset-10 { padding-top: 200px; }
+.can-info-offset-11 { padding-top: 220px; }
+.can-info-offset-12 { padding-top: 240px; }
+.can-info-offset-13 { padding-top: 260px; }
+.can-info-offset-14 { padding-top: 280px; }
+.can-info-offset-15 { padding-top: 300px; }
+.can-info-offset-16 { padding-top: 320px; }
+.can-info-offset-17 { padding-top: 340px; }
+.can-info-offset-18 { padding-top: 360px; }
+.can-info-offset-19 { padding-top: 380px; }
+.can-info-offset-20 { padding-top: 400px; }
+.can-info-offset-21 { padding-top: 420px; }
+.can-info-offset-22 { padding-top: 440px; }
+.can-info-offset-23 { padding-top: 460px; }
+.can-info-offset-24 { padding-top: 480px; }
+.can-info-offset-25 { padding-top: 500px; }
+.can-info-offset-26 { padding-top: 520px; }
 
     </style>
     </head>
@@ -117,7 +116,7 @@ $(document).ready(function(){
 
   var frames = [
         {
-            id : "0x64",
+            id : "0x064",
             source: 'FS2020',
             period: 'à la demande',
             destination: 'FCU_Display',
@@ -252,19 +251,19 @@ for(var idxFrame = 0; idxFrame < frames.length; idxFrame++) {
     html += '<div><strong>Période:</strong> '+frame.period+'</div>';
     html += '<div><strong>Taille:</strong> '+frame.size+'</div>';
     html += '<div><strong>Description:</strong> '+frame.description+'</div>';
-    html += '<div style="height:'+(offset * 22)+'px" class="message pt-3 rounded-3 bg-light" id="' + frame.id + '">';
-    html += '  <div class="id"><h3><span class="badge bg-success">'+frame.id+'</span></h3></div>';
-    html += '  <div class="structure clearfix">';
+    html += '<div style="height:'+(offset * 22)+'px" class="can-message pt-3 rounded-3 bg-light" id="' + frame.id + '">';
+    html += '<div>';
+    html += '<div class="can-id"><h4><span class="badge bg-success">'+frame.id+'</span></h4></div>';
     
     for(var idxBit = 0; idxBit < frame.bits.length; idxBit++) {
         var bit = frame.bits[idxBit];
         
-        html += '<div class="bits">';
+        html += '<div class="can-bits">';
         html += bit.value.replaceAll(' ', '&nbsp;');
 
         if(bit.info.length > 0) {
             offset -= bit.info.length;
-            html += '<div class="info offset-' + offset + '">';
+            html += '<div class="can-info can-info-offset-' + offset + '">';
             html += bit.info.join('<br>'); 
             html += '</div>';
         }
