@@ -29,7 +29,17 @@ $(document).ready(function(){
                     link : "../canbus-frames/canbus-frames.html"
                 }
             ]
-        }
+        },
+        {
+            title: "Modules",
+            items : [
+                {
+                    name : "FCU Display",
+                    description: "Détails technique du module des afficheurs du FCU",
+                    link: "../module-fcu-display/module-fcu-display.html"
+                }
+            ]
+        },
     ];
 
     var currentPage = getLastValueOfHtmlPath(document.location.href);
