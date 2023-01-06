@@ -4,6 +4,8 @@ import yaml
 import os.path
 import glob
 import shutil
+import random
+import string
 from yaml.loader import SafeLoader
 
 print(os.path.dirname(__file__));
@@ -17,7 +19,9 @@ if os.path.isdir(pages_path):
     shutil.rmtree(pages_path)
 
 os.makedirs(pages_path)
- 
+
+version = ''.join(random.choice(string.ascii_letters) for i in range(5));
+
 with open(root_path + 'doc.yaml') as doc_file:
     doc_config = yaml.load(doc_file, Loader=SafeLoader)
 
@@ -69,12 +73,12 @@ with open(root_path + 'doc.yaml') as doc_file:
 
             css_html = '';
             for style in style_files:
-                css_html += '<link href="../src/'+ folder_relative + os.path.basename(style)+'" rel="stylesheet">';
+                css_html += '<link href="../src/'+ folder_relative + os.path.basename(style)+'?v='+version+'" rel="stylesheet">';
 
 
             script_html = '';
             for script in script_files:
-                script_html += '<script src="../src/'+folder_relative + os.path.basename(script) +'"></script>';
+                script_html += '<script src="../src/'+folder_relative + os.path.basename(script) +'?v='+version+'"></script>';
         
             html = html.replace("[[menu]]", menu_html);
             html = html.replace("[[styles]]", css_html);
@@ -94,3 +98,4 @@ with open(root_path + 'doc.yaml') as doc_file:
     index_file = open(root_path + "/index.html", "w");
     index_file.write(html.replace('[[home_url]]', 'pages/' + url_homepage));
     index_file.close();
+
