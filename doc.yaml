@@ -1,0 +1,29 @@
+nav:
+  introduction:
+    title: Introduction
+    pages:
+      home:
+        title: Acceuil
+        description: je suis une description
+      documentation:
+        title: Documentation
+        description: je suis une description,
+  
+  canbus:
+    title: CAN Bus
+    pages:
+      presentation:
+        title : Présentation
+        description: Je suis une description
+      messages:
+        title : Messages
+        description: Je suis une description
+
+  modules:
+    title: Modules
+    pages:
+      fcudisplay:
+        title: FCU Display
+        description: je suis
+  
+

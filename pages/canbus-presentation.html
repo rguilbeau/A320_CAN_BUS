@@ -1,0 +1,95 @@
+<html>
+<head>
+    <title>Présentation</title>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="../theme.css" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row container-row">
+          <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+            <div id="menu" class="position-sticky pt-3">
+                <ul class="list-unstyled ps-0"><li class="mb-1">   <button id="menu-collapse-button-introduction" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#menu-collapse-introduction" aria-expanded="false">Introduction   </button>   <div class="collapse" id="menu-collapse-introduction">       <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">       <li><a data-id="introduction-home" href="introduction-home.html" class="link-dark rounded">Acceuil</a></li>       <li><a data-id="introduction-documentation" href="introduction-documentation.html" class="link-dark rounded">Documentation</a></li>       </ul></li><li class="mb-1">   <button id="menu-collapse-button-canbus" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#menu-collapse-canbus" aria-expanded="false">CAN Bus   </button>   <div class="collapse" id="menu-collapse-canbus">       <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">       <li><a data-id="canbus-presentation" href="canbus-presentation.html" class="link-dark rounded">Présentation</a></li>       <li><a data-id="canbus-messages" href="canbus-messages.html" class="link-dark rounded">Messages</a></li>       </ul></li><li class="mb-1">   <button id="menu-collapse-button-modules" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#menu-collapse-modules" aria-expanded="false">Modules   </button>   <div class="collapse" id="menu-collapse-modules">       <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">       <li><a data-id="modules-fcudisplay" href="modules-fcudisplay.html" class="link-dark rounded">FCU Display</a></li>       </ul></li></ul>
+            </div>
+          </nav>
+      
+          <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="bg-light p-5 rounded mt-5 mb-4">
+                <h1 id="title">CAN Bus - Présentation</h1>
+                <p id="description" class="lead">Je suis une description</p>
+            </div>
+            <h2>Présentation</h2>
+<p>
+    Le réseau CAN Bus permet de faire communiquer chaque module les uns avec les autres au travers de 2 fils CAN-low CAN-hight. 
+    Tous les modules sont donc relié entre eux :
+
+    <center>
+      <div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2023-01-05T18:47:25.598Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36\&quot; etag=\&quot;iOeuP3xMhVGwNiRooRGh\&quot; version=\&quot;20.8.1\&quot; type=\&quot;device\&quot;&gt;&lt;diagram id=\&quot;-o28_a95GBK_GpdNQeRj\&quot; name=\&quot;Page-1\&quot;&gt;7Vpbb5swGP01kbYHIsDc8pimTffQmxRV254qFxzw5uDIcZqkv34mmIBxmrVrB1TJU/IdX8DnfN+xQfTAaLa+ZHCeXNMIkZ5tRuseOO/Ztm16lvjJkE2O+L6fAzHDUQ5ZJTDBz0iCpkSXOEILpSOnlHA8V8GQpikKuYJBxuhK7TalRL3qHMZIAyYhJDr6HUc8ydHA9kv8G8JxUlzZ8gZ5ywwWneVKFgmM6KoCgYseGDFKef5vth4hkpFX8JKPG7/QursxhlL+mgF4aC2Dh+fJ/eD25h5f3d0+BGOjoHnBN8WKUSQIkCFlPKExTSG5KNEzRpdphLJpTRGVfa4onQvQEuAvxPlGqgmXnAoo4TMiW9Ea8x/Z8L7tyvBnpel8LafeBpsiSKNhJqgIU5qiHBljQmS7zoekaEGXLESHSMj7ZQuvDJQsXiI6Q5xtRAeGCOT4Sc0MKBMs3vXbDb2jWNyKbe6KQZItSwEAU52CQxYjLkeVSoo/ldsooa2+b9BacN2q1v4xae3VtDab1Vre8BMkS7mE8ehek18Vd5VgjiZzuOVvJexcFXIq6B9RQtl2LIhcFESOwBec0d+o0hLYj8DzDqn0hBhH64P8F62+yqM1kPGqNGOrcNikYsSe+bJkCtlvriLvVEWG3UwVOXXHbLiKil3+qHfHhrQGTsu7o+aY15/SMYHVNce0nFMVGaAhxwzarSLrdMZsTGu37pgN745Ac8yrzE2MOUyzlwCfzjkdt3PO2fJZsxPO6TRTTZ7dsnO2fNbshHM2pXV9l2zYOR3NOfv9/id0THfQNccMToZpuM0UEWj5ea3lp4pO+GVDUg/atUtXs8s7MZH5ZTyxTdv8+rHGCVEwDfcZpxcG6HH6TuPsjFF6Gqd6OWlpW6FN5fhFSv6amRUC3D3rL7B3JrBRN6t6BueVpmWwNpFvtVsK/nHLVt9j/lm2pg/3gabbaHgjACMjTvCmqSiMhKvSqYYkpa26l4QgwXEqwlCIigR+ltkSDiEZyoYZjqLtbrjPGV+ZIK8/IxpW7SW+Hbia9/l7cqgu0cc9VQ8OiEFE4RyPFsD6b1qIsPy2Ia+j8gsRcPEH&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+      <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+    </center>
+
+    <div class="alert alert-warning" role="alert">
+      Le bus CAN doit être normalement terminé par des resistantes de 120ohm, mais cela n'est pour le moment pas présent et tout semble fonctionner. 
+    </div>
+</p>
+
+<p>
+  Les informations circulent sous forme de message (sans sens particulier) et chaque module et le PC est en écoute des messages et 
+  les traitent s'il leur ai destiné.
+</p>
+
+<h4>Trame d'un message</h4>
+<p>
+  <div class="text-center">
+    <img src="../src/canbus/presentation//can-trame.webp">
+  </div>
+</p>
+
+<h2>Module CANable</h2>
+<p>Le module CANable permet de décoder le bus CAN venant du cockpit via un port USB du PC.</p>
+
+<h2>Configuration</h2>
+<p>
+    Le CANable fonctionne sur les bauds rates suivants:
+    <ul>
+        <li><strong>Serial baud rate: </strong> 9600</li>
+        <li><strong>CAN Bus baud rate: </strong>125 kbits</li>
+    </ul>
+</p>
+    
+<h2>Pilote</h2>
+<p>
+    Pour l’installation des drivers, télécharger ce fichier zip 
+    <a href="https://github.com/rguilbeau/A320_Documentation/tree/main/_assets/driver">https://github.com/rguilbeau/A320_Documentation/tree/main/_assets/driver</a> 
+    (ou depuis le site de l'éditeur <a href="https://canable.io/">https://canable.io/</a>) 
+    extraire sont contenu et installer le grâce au clique droit sur le fichier .inf puis "Installer"
+</p>
+    
+<p>Vérifier dans le gestionnaire de périphérique, il devrait être visible en tant que Ports (COM et LPT).
+
+    <div class="alert alert-warning" role="alert">
+        Le COM Port doit indiquer <strong>CANtact</strong>. Si ce n’est pas le cas, aller sur cette page <a href="https://canable.io/updater/">https://canable.io/updater/</a> du constructeur 
+        et suivre les instructions pour flasher le CANable sur le firmware <code>slcan</code>
+      </div>
+
+    <div class="text-center ">
+        <img src="../src/canbus/presentation//gestionnaire-peripherique.png" class="rounded">
+    </div>                    
+</p>
+          </main>
+        </div>
+      </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+    <script>
+        const CURRENT_PAGE = 'canbus-presentation';
+        const CURRENT_CATEGORY = 'canbus';
+    </script>
+    <script src="../theme.js"></script>
+    
+</body>
+</html>
