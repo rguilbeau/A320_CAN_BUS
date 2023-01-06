@@ -6,10 +6,16 @@ main {
     height: 100vh;
 }
 
-
 .sidebar,
 main {
     overflow: auto;
+}
+
+@media screen and (max-width: 767px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+    }
 }
 
 .dropdown-toggle {

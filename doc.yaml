@@ -4,26 +4,26 @@ nav:
     pages:
       home:
         title: Acceuil
-        description: je suis une description
+        description: Documentation technique du fonctionnement de la reproduction du cockpit A320
       documentation:
         title: Documentation
-        description: je suis une description,
+        description: Aide mémoire pour maintenir la documentation,
   
   canbus:
     title: CAN Bus
     pages:
       presentation:
-        title : Présentation
-        description: Je suis une description
+        title : Présentation / drivers
+        description: Vue rapide de l'intégration du CAN Bus dans le cockpit
       messages:
         title : Messages
-        description: Je suis une description
+        description: Définition des messages du CAN Bus
 
   modules:
     title: Modules
     pages:
       fcudisplay:
         title: FCU Display
-        description: je suis
+        description: Détails technique du module des afficheurs du FCU
   
 
