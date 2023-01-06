@@ -10,18 +10,18 @@ var CANBUS_FRAMES = [
             {
                 value : "SSSSSSSS ",
                 info : [
-                    "Dizaines d'unité de la vitesse, pour une vitesse de 250 la valeur sera 50",
-                    "Si MACH, SSSSSSSS / 100"
+                    "Les dizaines de la vitesse, pour une vitesse de 250 la valeur sera 50",
+                    "Si MACH, vitesse / 100"
                 ]
             },
             {
                 value : "HHHHHHHH ",
-                info: ["Dizaines d'unité du cap, pour cap au 320 la valeur sera 20"]
+                info: ["Les dizaines du cap, pour cap au 320 la valeur sera 20"]
             },
             {
                 value: 'SSSSS',
                 info: [
-                    "Centaine d'unité de la vitesse",
+                    "Les centaines de la vitesse",
                     '10000 - SSSSSSSS + 100 knots',
                     '01000 - SSSSSSSS + 200 knots',
                     '00100 - SSSSSSSS + 300 knots',
@@ -32,7 +32,7 @@ var CANBUS_FRAMES = [
             {
                 value: 'HHH ',
                 info: [
-                    "Centaine d'untité du cap",
+                    "Les centaines du cap",
                     '100 - HHHHHHHH + 100°',
                     '010 - HHHHHHHH + 200°',
                     '001 - HHHHHHHH + 300°'
@@ -106,7 +106,7 @@ var CANBUS_FRAMES = [
     },
     {
         id : "0x0C8",
-        source: 'Cockpit',
+        source: 'all',
         period: 'à la demande',
         destination: 'all',
         description: "Niveau de rétroéclairage",
