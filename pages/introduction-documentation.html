@@ -1,6 +1,7 @@
 <html>
 <head>
     <title>A320 Home cockpit - Documentation</title>
+    <meta name="theme-color" content="#0D6EFD">
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href="../app.css" rel="stylesheet">
@@ -18,9 +19,37 @@
           <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="bg-light p-5 rounded mt-5 mb-4">
                 <h1 id="title">Introduction - Documentation</h1>
-                <p id="description" class="lead">Aide mémoire pour maintenir la documentation,</p>
+                <p id="description" class="lead">Aide mémoire pour maintenir la documentation</p>
             </div>
-            <h2>Fonctionnement</h2>
+            
+<h2>Fonctionnement</h2>
+
+<p>La configuration du menu se fait dans le fichier <code>doc.yaml</code> dans l'item <code>nav</code>.</p>
+
+<p>
+  Toutes les pages sont dans le dossier <code>src</code> et la hiérarchie des dossiers doit correspondre à l'architecture de la configuration <code>nav</code> 
+  afin que le script python puisse reconstruire les fichiers html.
+</p>
+
+<h2>Ajouter une nouvelle page</h2>
+<p>
+  Pour ajouter une nouvelle page:
+  <ul>
+    <li>Créer un nouveau dossier dans <code>src</code> correspondant à la "catégorie"</li>
+    <li>Dans ce dossier créer un sous-dossier correspondant à la "page"</li>
+    <li>Ce dossier doit contenir un fichier <code>index.html</code> qui contiendera le contenu de la doc</li>
+    <li>Tous les fichiers <code>.js</code> et <code>.css</code> dans le dossier seront automatiquement chargés pour cette page</li>
+  </ul>
+</p>
+
+<h2>Integrer des images</h2>
+<p>
+  Pour intégrer une image dans un document:
+  <ul>
+    <li>Ajouter le fichier image dans le même dossier que le fichier <code>index.html</code> de votre page</li>
+    <li>Ajouter une balise <code>&lt;img src="[[folder_path]/fichier_image.jpg"/&gt;</code></li>
+  </ul>
+</p>
 
 <h2>Intégrer des diagrammes</h2>
 <ul>
