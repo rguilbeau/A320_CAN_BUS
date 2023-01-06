@@ -9,7 +9,10 @@ var CANBUS_FRAMES = [
         bits: [
             {
                 value : "SSSSSSSS ",
-                info : ["Dizaines d'unité de la vitesse, pour une vitesse de 250 la valeur sera 50"]
+                info : [
+                    "Dizaines d'unité de la vitesse, pour une vitesse de 250 la valeur sera 50",
+                    "Si MACH, SSSSSSSS / 100"
+                ]
             },
             {
                 value : "HHHHHHHH ",
@@ -98,6 +101,22 @@ var CANBUS_FRAMES = [
             {
                 value: '0000',
                 info: []
+            }
+        ]
+    },
+    {
+        id : "0x0C8",
+        source: 'Cockpit',
+        period: 'à la demande',
+        destination: 'all',
+        description: "Niveau de rétroéclairage",
+        size : 1,
+        bits: [
+            {
+                value : "FFFFFFFF ",
+                info : [
+                    "Rétroéclairage des écrans du FCU (de 0 à 100%)"
+                ]
             }
         ]
     }

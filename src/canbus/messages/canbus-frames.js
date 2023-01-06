@@ -33,16 +33,16 @@ $(document).ready(function(){
         var offset = 0;
         for(var idxBit = 0; idxBit < frame.bits.length; idxBit++) {
             var bit = frame.bits[idxBit];
-        offset += frame.bits[idxBit].info.length;
+            offset += frame.bits[idxBit].info.length;
         }
-
+        
         html += '<hr class="mt-4" />';
         html += '<div><strong>Source:</strong> '+frame.source+'</div>';
         html += '<div><strong>Destination:</strong> '+frame.destination+'</div>';
         html += '<div><strong>Période:</strong> '+frame.period+'</div>';
         html += '<div><strong>Taille:</strong> '+frame.size+'</div>';
         html += '<div><strong>Description:</strong> '+frame.description+'</div>';
-        html += '<div style="height:'+(offset * 22)+'px" class="can-message pt-3 rounded-3 bg-light" id="' + frame.id + '">';
+        html += '<div style="height:'+(offset * 22)+'px; min-height:150px" class="can-message pt-3 rounded-3 bg-light" id="' + frame.id + '">';
         html += '<div>';
         html += '<div class="can-id"><h4><span class="badge bg-success">'+frame.id+'</span></h4></div>';
 
