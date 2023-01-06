@@ -43,6 +43,8 @@ with open(root_path + 'doc.yaml') as doc_file:
     menu_html += '</ul>';
     
     url_homepage = '';
+    doc_name = doc_config['name'];
+
     for category in doc_config['nav']:
         category_title = doc_config['nav'][category]['title']
 
@@ -76,7 +78,7 @@ with open(root_path + 'doc.yaml') as doc_file:
         
             html = html.replace("[[menu]]", menu_html);
             html = html.replace("[[styles]]", css_html);
-            html = html.replace("[[page-title]]", title);
+            html = html.replace("[[page-title]]", doc_name + ' - ' + title);
             html = html.replace("[[header-title]]", category_title + ' - ' + title);
             html = html.replace("[[header-description]]", description);
             html = html.replace("[[content]]", content_html);
@@ -92,4 +94,3 @@ with open(root_path + 'doc.yaml') as doc_file:
     index_file = open(root_path + "/index.html", "w");
     index_file.write(html.replace('[[home_url]]', 'pages/' + url_homepage));
     index_file.close();
-

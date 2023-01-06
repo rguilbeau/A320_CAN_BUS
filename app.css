@@ -33,7 +33,7 @@ main {
 }
 .btn-toggle:hover, .btn-toggle:focus {
     color: rgba(0, 0, 0, .85);
-    background-color: #d2f4ea;
+    background-color: #00000008;
 }
 .btn-toggle::before {
     width: 1.25em;
@@ -56,7 +56,7 @@ main {
     text-decoration: none;
 }
 .btn-toggle-nav a:hover, .btn-toggle-nav a:focus {
-    background-color: #d2f4ea;
+    background-color: #00000008;
 }
 .scrollarea {
     overflow-y: auto;

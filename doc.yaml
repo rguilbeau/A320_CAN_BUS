@@ -1,9 +1,10 @@
+name: A320 Home cockpit
 nav:
   introduction:
     title: Introduction
     pages:
       home:
-        title: Acceuil
+        title: A320 Home cockpit
         description: Documentation technique du fonctionnement de la reproduction du cockpit A320
       documentation:
         title: Documentation
