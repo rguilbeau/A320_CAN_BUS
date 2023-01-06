@@ -10,6 +10,17 @@ nav:
         title: Documentation
         description: Aide mémoire pour maintenir la documentation
   
+  fabrication:
+    title: Fabrication
+    pages:
+        panel:
+          title: Façades
+          description: Détails technique de la fabrication et la découpe des façades des modules
+          
+        alimentation:
+          title: Alimentation électrique
+          description: Vue générale de l'alimentation électrique du cockpit
+
   canbus:
     title: CAN Bus
     pages:

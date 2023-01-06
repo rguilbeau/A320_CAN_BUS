@@ -1,0 +1,20 @@
+<h2>Notes</h2>
+
+<ul>
+    <li>
+        Une Alim 12v (puissance à déterminer 10A, 20A + ?)
+        <ul>
+            <li><i>Plus simple que deux circuits 5V et 12V</i></li>
+        </ul>
+    </li>
+    <li>Ajout pour chaque module d'un régulateur de tension <code>MP1584 12v - 5v</code> pour chaque modules</li>
+    <li>
+        Alimentaion des cartes arduino en direct (pin 5v) sans passer par le régulateur de tension de la carte<br>
+        !! Si utilisation d'un nodemcu, il faudra quand même passer par le régulateur de la carte (en direct un nodemcu s'alimente avec du 3.3V)
+        <ul>
+            <li><i>Les composants des circuits seront branchés sur la sortie 5V du module MP1584 et non sur la carte arduino</i></li>
+            <li><i>Limite plus large du courant (max 500mA pour le régulateur de la carte contre 3A pour le MP1584), plus trop de question à se poser...</i></li>
+        </ul>
+    </li>
+    <li>Voir : <a href="https://riton-duino.blogspot.com/2020/04/arduino-lalimentation.html?m=1" target="_blank">https://riton-duino.blogspot.com/2020/04/arduino-lalimentation.html?m=1</a></li>
+</ul>

@@ -40,6 +40,10 @@ h6 {
     color: rgb(182, 182, 182);
 }
 
+.table {
+    width: auto;
+}
+
 .sidebar,
 main {
     overflow: auto;

@@ -71,12 +71,12 @@ with open(root_path + 'doc.yaml') as doc_file:
 
             html = open(builder_path + 'page_template.html', "r").read();
 
-            css_html = '';
+            css_html = '<link href="../app.css'+'?v='+version+'" rel="stylesheet">';
             for style in style_files:
                 css_html += '<link href="../src/'+ folder_relative + os.path.basename(style)+'?v='+version+'" rel="stylesheet">';
 
 
-            script_html = '';
+            script_html = '<script src="../app.js'+'?v='+version+'"></script>';
             for script in script_files:
                 script_html += '<script src="../src/'+folder_relative + os.path.basename(script) +'?v='+version+'"></script>';
         

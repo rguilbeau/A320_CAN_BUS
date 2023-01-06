@@ -4,29 +4,44 @@
     <meta name="theme-color" content="#0D6EFD">
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link href="../app.css" rel="stylesheet">
-    
+    <link href="../app.css?v=FFUWa" rel="stylesheet">
 </head>
 <body>
     <div class="container-fluid">
         <div class="row container-row">
           <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
             <div id="menu" class="position-sticky pt-3">
-                <ul class="list-unstyled ps-0"><li class="mb-1">   <button id="menu-collapse-button-introduction" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#menu-collapse-introduction" aria-expanded="false">Introduction   </button>   <div class="collapse" id="menu-collapse-introduction">       <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">       <li><a data-id="introduction-home" href="introduction-home.html" class="link-dark rounded">A320 Home cockpit</a></li>       <li><a data-id="introduction-documentation" href="introduction-documentation.html" class="link-dark rounded">Documentation</a></li>       </ul></li><li class="mb-1">   <button id="menu-collapse-button-canbus" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#menu-collapse-canbus" aria-expanded="false">CAN Bus   </button>   <div class="collapse" id="menu-collapse-canbus">       <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">       <li><a data-id="canbus-presentation" href="canbus-presentation.html" class="link-dark rounded">Présentation / drivers</a></li>       <li><a data-id="canbus-messages" href="canbus-messages.html" class="link-dark rounded">Messages</a></li>       </ul></li><li class="mb-1">   <button id="menu-collapse-button-modules" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#menu-collapse-modules" aria-expanded="false">Modules   </button>   <div class="collapse" id="menu-collapse-modules">       <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">       <li><a data-id="modules-fcudisplay" href="modules-fcudisplay.html" class="link-dark rounded">FCU Display</a></li>       </ul></li></ul>
+                <ul class="list-unstyled ps-0"><li class="mb-1">   <button id="menu-collapse-button-introduction" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#menu-collapse-introduction" aria-expanded="false">Introduction   </button>   <div class="collapse" id="menu-collapse-introduction">       <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">       <li><a data-id="introduction-home" href="introduction-home.html" class="link-dark rounded">A320 Home cockpit</a></li>       <li><a data-id="introduction-documentation" href="introduction-documentation.html" class="link-dark rounded">Documentation</a></li>       </ul></li><li class="mb-1">   <button id="menu-collapse-button-fabrication" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#menu-collapse-fabrication" aria-expanded="false">Fabrication   </button>   <div class="collapse" id="menu-collapse-fabrication">       <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">       <li><a data-id="fabrication-panel" href="fabrication-panel.html" class="link-dark rounded">Façades</a></li>       <li><a data-id="fabrication-alimentation" href="fabrication-alimentation.html" class="link-dark rounded">Alimentation électrique</a></li>       </ul></li><li class="mb-1">   <button id="menu-collapse-button-canbus" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#menu-collapse-canbus" aria-expanded="false">CAN Bus   </button>   <div class="collapse" id="menu-collapse-canbus">       <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">       <li><a data-id="canbus-presentation" href="canbus-presentation.html" class="link-dark rounded">Présentation / drivers</a></li>       <li><a data-id="canbus-messages" href="canbus-messages.html" class="link-dark rounded">Messages</a></li>       </ul></li><li class="mb-1">   <button id="menu-collapse-button-modules" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#menu-collapse-modules" aria-expanded="false">Modules   </button>   <div class="collapse" id="menu-collapse-modules">       <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">       <li><a data-id="modules-fcudisplay" href="modules-fcudisplay.html" class="link-dark rounded">FCU Display</a></li>       </ul></li></ul>
             </div>
           </nav>
       
           <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <div class="bg-light p-5 rounded mt-5 mb-4">
+            <div class="pb-5">
+              <div class="bg-light p-5 rounded mt-5 mb-4">
                 <h1 id="title">Modules - FCU Display</h1>
                 <p id="description" class="lead">Détails technique du module des afficheurs du FCU</p>
-            </div>
-            <h2>Présentation</h2>
-<p>Ce module concerne la gestion des afficheurs du FCU</p>
+              </div>
+              <h2>Description</h2>
+<p>
+  <table class="table">
+    <tr>
+      <th>Contexte</th>
+      <td>Gestion des afficheurs du FCU</td>
+    </tr>
+    <tr>
+      <th>Microcontrolleur</th>
+      <td>arduino nano</td>
+    </tr>
+    <tr>
+      <th>Git</th>
+      <td><a href="https://github.com/rguilbeau/A320_FCU_Display" target="_blank">A320_FCU_Display</a></td>
+    </tr>
+  </table>
+</p>
 
-<h2>Fichier d'impression 3D</h2>
+<h2>Paramètres d'impression 3D</h2>
 
-<table id="summary-table" class="table mb-5">
+<table class="table mb-5">
   <thead>
     <tr>
       <th>Fichier</th>
@@ -39,7 +54,7 @@
   </thead>
   <tbody>
     <tr>
-      <td><code>CE3PRO_support_fcu_display.gcode</code></td>
+      <td><a href="https://github.com/rguilbeau/A320_Documentation/tree/main/_assets/print_files/fcu_display" target="_blank">CE3PRO_support_fcu_display.gcode</a></td>
       <td>PLA+</td>
       <td>0.2</td>
       <td>0.12</td>
@@ -49,11 +64,8 @@
   </tbody>
 </table>
 
-<ul>
-  <li>Lien vers les <a href="https://github.com/rguilbeau/A320_Documentation/tree/main/_assets/print_files/fcu_display">fichiers d'impression</a> du module FCU Display</li>
-</ul>
-
-<h4>Schéma</h4>
+<h2>Schéma</h2>
+            </div>
           </main>
         </div>
       </div>
@@ -65,7 +77,6 @@
         const CURRENT_PAGE = 'modules-fcudisplay';
         const CURRENT_CATEGORY = 'modules';
     </script>
-    <script src="../app.js"></script>
-    
+    <script src="../app.js?v=FFUWa"></script>
 </body>
 </html>

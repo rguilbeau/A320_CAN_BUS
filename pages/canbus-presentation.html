@@ -4,24 +4,24 @@
     <meta name="theme-color" content="#0D6EFD">
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link href="../app.css" rel="stylesheet">
-    
+    <link href="../app.css?v=FFUWa" rel="stylesheet">
 </head>
 <body>
     <div class="container-fluid">
         <div class="row container-row">
           <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
             <div id="menu" class="position-sticky pt-3">
-                <ul class="list-unstyled ps-0"><li class="mb-1">   <button id="menu-collapse-button-introduction" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#menu-collapse-introduction" aria-expanded="false">Introduction   </button>   <div class="collapse" id="menu-collapse-introduction">       <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">       <li><a data-id="introduction-home" href="introduction-home.html" class="link-dark rounded">A320 Home cockpit</a></li>       <li><a data-id="introduction-documentation" href="introduction-documentation.html" class="link-dark rounded">Documentation</a></li>       </ul></li><li class="mb-1">   <button id="menu-collapse-button-canbus" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#menu-collapse-canbus" aria-expanded="false">CAN Bus   </button>   <div class="collapse" id="menu-collapse-canbus">       <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">       <li><a data-id="canbus-presentation" href="canbus-presentation.html" class="link-dark rounded">Présentation / drivers</a></li>       <li><a data-id="canbus-messages" href="canbus-messages.html" class="link-dark rounded">Messages</a></li>       </ul></li><li class="mb-1">   <button id="menu-collapse-button-modules" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#menu-collapse-modules" aria-expanded="false">Modules   </button>   <div class="collapse" id="menu-collapse-modules">       <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">       <li><a data-id="modules-fcudisplay" href="modules-fcudisplay.html" class="link-dark rounded">FCU Display</a></li>       </ul></li></ul>
+                <ul class="list-unstyled ps-0"><li class="mb-1">   <button id="menu-collapse-button-introduction" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#menu-collapse-introduction" aria-expanded="false">Introduction   </button>   <div class="collapse" id="menu-collapse-introduction">       <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">       <li><a data-id="introduction-home" href="introduction-home.html" class="link-dark rounded">A320 Home cockpit</a></li>       <li><a data-id="introduction-documentation" href="introduction-documentation.html" class="link-dark rounded">Documentation</a></li>       </ul></li><li class="mb-1">   <button id="menu-collapse-button-fabrication" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#menu-collapse-fabrication" aria-expanded="false">Fabrication   </button>   <div class="collapse" id="menu-collapse-fabrication">       <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">       <li><a data-id="fabrication-panel" href="fabrication-panel.html" class="link-dark rounded">Façades</a></li>       <li><a data-id="fabrication-alimentation" href="fabrication-alimentation.html" class="link-dark rounded">Alimentation électrique</a></li>       </ul></li><li class="mb-1">   <button id="menu-collapse-button-canbus" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#menu-collapse-canbus" aria-expanded="false">CAN Bus   </button>   <div class="collapse" id="menu-collapse-canbus">       <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">       <li><a data-id="canbus-presentation" href="canbus-presentation.html" class="link-dark rounded">Présentation / drivers</a></li>       <li><a data-id="canbus-messages" href="canbus-messages.html" class="link-dark rounded">Messages</a></li>       </ul></li><li class="mb-1">   <button id="menu-collapse-button-modules" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#menu-collapse-modules" aria-expanded="false">Modules   </button>   <div class="collapse" id="menu-collapse-modules">       <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">       <li><a data-id="modules-fcudisplay" href="modules-fcudisplay.html" class="link-dark rounded">FCU Display</a></li>       </ul></li></ul>
             </div>
           </nav>
       
           <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <div class="bg-light p-5 rounded mt-5 mb-4">
+            <div class="pb-5">
+              <div class="bg-light p-5 rounded mt-5 mb-4">
                 <h1 id="title">CAN Bus - Présentation / drivers</h1>
                 <p id="description" class="lead">Vue rapide de l'intégration du CAN Bus dans le cockpit</p>
-            </div>
-            <h2>Présentation</h2>
+              </div>
+              <h2>Présentation</h2>
 <p>
     Le réseau CAN Bus permet de faire communiquer chaque module les uns avec les autres au travers de 2 fils CAN-low CAN-hight. 
     Tous les modules sont donc relié entre eux :
@@ -54,24 +54,30 @@
 <h2>Configuration</h2>
 <p>
     Le CANable fonctionne sur les bauds rates suivants:
-    <ul>
-        <li><strong>Serial baud rate: </strong> 9600</li>
-        <li><strong>CAN Bus baud rate: </strong>125 kbits</li>
-    </ul>
+    <table class="table">
+      <tr>
+        <th>Serial baud rate</th>
+        <td>9600</td>
+      </tr>
+      <tr>
+        <th>CAN Bus baud rate</th>
+        <td>125 kbits</td>
+      </tr>
+    </table>
 </p>
     
 <h2>Pilote</h2>
 <p>
     Pour l’installation des drivers, télécharger ce fichier zip 
-    <a href="https://github.com/rguilbeau/A320_Documentation/tree/main/_assets/driver">https://github.com/rguilbeau/A320_Documentation/tree/main/_assets/driver</a> 
-    (ou depuis le site de l'éditeur <a href="https://canable.io/">https://canable.io/</a>) 
+    <a href="https://github.com/rguilbeau/A320_Documentation/tree/main/_assets/driver" target="_blank">https://github.com/rguilbeau/A320_Documentation/tree/main/_assets/driver</a> 
+    (ou depuis le site de l'éditeur <a href="https://canable.io/" target="_blank">https://canable.io/</a>) 
     extraire sont contenu et installer le grâce au clique droit sur le fichier .inf puis "Installer"
 </p>
     
 <p>Vérifier dans le gestionnaire de périphérique, il devrait être visible en tant que Ports (COM et LPT).
 
     <div class="alert alert-warning" role="alert">
-        Le COM Port doit indiquer <strong>CANtact</strong>. Si ce n’est pas le cas, aller sur cette page <a href="https://canable.io/updater/">https://canable.io/updater/</a> du constructeur 
+        Le COM Port doit indiquer <strong>CANtact</strong>. Si ce n’est pas le cas, aller sur cette page <a href="https://canable.io/updater/" target="_blank">https://canable.io/updater/</a> du constructeur 
         et suivre les instructions pour flasher le CANable sur le firmware <code>slcan</code>
       </div>
 
@@ -79,6 +85,7 @@
         <img src="../src/canbus/presentation//gestionnaire-peripherique.png" class="rounded">
     </div>                    
 </p>
+            </div>
           </main>
         </div>
       </div>
@@ -90,7 +97,6 @@
         const CURRENT_PAGE = 'canbus-presentation';
         const CURRENT_CATEGORY = 'canbus';
     </script>
-    <script src="../app.js"></script>
-    
+    <script src="../app.js?v=FFUWa"></script>
 </body>
 </html>
