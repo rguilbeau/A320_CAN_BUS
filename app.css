@@ -54,6 +54,10 @@ main {
         width: 100%;
         height: auto;
     }
+
+    main {
+        height: auto;
+    }
 }
 
 .dropdown-toggle {
@@ -143,4 +147,13 @@ body {
     to {
         opacity: 1;
     }
+}
+
+.svg-preview {
+    cursor: pointer;
+}
+
+.svg-preview svg {
+    height: fit-content;
+    width: 80%;
 }

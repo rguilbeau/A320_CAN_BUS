@@ -22,6 +22,28 @@ os.makedirs(pages_path)
 
 version = ''.join(random.choice(string.ascii_letters) for i in range(5));
 
+
+def createOverlaySvgModal(id, svg_content):
+    html = '';
+
+    html += '<center class="svg-preview" data-bs-toggle="modal" data-bs-target="#'+id+'">'+content+'</center>';
+
+    html += '<div class="modal fade modal-xl" id="'+id+'" tabindex="-1" aria-labelledby="'+id+'" aria-hidden="true">';
+    html += '  <div class="modal-dialog">';
+    html += '    <div class="modal-content">';
+    html += '      <div class="modal-body">';
+    html += '        <div style="overflow: hidden; height: 80vh;" data-zoom-on-wheel data-pan-on-drag>';
+    html += svg_content;
+    html += '        </div>';
+    html += '      </div>';
+    html += '      <div class="modal-footer">';
+    html += '        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>';
+    html += '      </div>';
+    html += '    </div>';
+    html += '  </div>';
+    html += '</div>';
+    return html;
+
 with open(root_path + 'doc.yaml') as doc_file:
     doc_config = yaml.load(doc_file, Loader=SafeLoader)
 
@@ -66,6 +88,8 @@ with open(root_path + 'doc.yaml') as doc_file:
             page_folder = src_path + folder_relative + '/';
             script_files = glob.glob(page_folder + '/*.js');
             style_files = glob.glob(page_folder + '/*.css');
+            svg_files = glob.glob(page_folder + '/*.svg');
+
             content_html = open(page_folder + 'index.html', "r").read();
             content_html = content_html.replace('[[folder_path]]', '../src/' + folder_relative)
 
@@ -76,10 +100,11 @@ with open(root_path + 'doc.yaml') as doc_file:
                 css_html += '<link href="../src/'+ folder_relative + os.path.basename(style)+'?v='+version+'" rel="stylesheet">';
 
 
-            script_html = '<script src="../app.js'+'?v='+version+'"></script>';
+            script_html = '<script src="../SvgZoom.js'+'?v='+version+'"></script>';
+            script_html += '<script src="../app.js'+'?v='+version+'"></script>';
             for script in script_files:
                 script_html += '<script src="../src/'+folder_relative + os.path.basename(script) +'?v='+version+'"></script>';
-        
+
             html = html.replace("[[menu]]", menu_html);
             html = html.replace("[[styles]]", css_html);
             html = html.replace("[[page-title]]", doc_name + ' - ' + title);
@@ -90,6 +115,15 @@ with open(root_path + 'doc.yaml') as doc_file:
             html = html.replace("[[current_category]]", category);
             html = html.replace("[[current_page]]", page_id);
 
+            for svg in svg_files:
+                base_name = os.path.basename(svg)
+                if html.find("[["+base_name+"]]") == -1:
+                    print("ERROR : " + base_name + " not found !");
+                else:
+                    content = open(svg, "r").read();
+                    modal = createOverlaySvgModal(base_name, content);
+                    html = html.replace("[["+base_name+"]]", modal);
+                    
             page_file = open(pages_path + "/" + page_id + ".html", "x");
             page_file.write(html);
             page_file.close();
@@ -98,4 +132,7 @@ with open(root_path + 'doc.yaml') as doc_file:
     index_file = open(root_path + "/index.html", "w");
     index_file.write(html.replace('[[home_url]]', 'pages/' + url_homepage));
     index_file.close();
+
+
+
 

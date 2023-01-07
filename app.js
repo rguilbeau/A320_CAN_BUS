@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
     var linkMenuCurrentPage = $('[data-id=' + CURRENT_PAGE +']');
     linkMenuCurrentPage.removeClass("link-dark");
