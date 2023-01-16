@@ -1,0 +1,131 @@
+<html>
+<head>
+    <title>A320 Home cockpit - SimConnect et WASM</title>
+    <meta name="theme-color" content="#0D6EFD">
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="../app.css?v=mIJYe" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row container-row">
+          <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+            <div id="menu" class="position-sticky pt-3">
+                <ul class="list-unstyled ps-0"><li class="mb-1">   <button id="menu-collapse-button-introduction" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#menu-collapse-introduction" aria-expanded="false">Introduction   </button>   <div class="collapse" id="menu-collapse-introduction">       <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">       <li><a data-id="introduction-home" href="introduction-home.html" class="link-dark rounded">A320 Home cockpit</a></li>       <li><a data-id="introduction-environement_dev" href="introduction-environement_dev.html" class="link-dark rounded">Environement de développement</a></li>       <li><a data-id="introduction-documentation" href="introduction-documentation.html" class="link-dark rounded">Maintien Documentation</a></li>       </ul></li><li class="mb-1">   <button id="menu-collapse-button-msfs_communication" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#menu-collapse-msfs_communication" aria-expanded="false">Communication avec MSFS   </button>   <div class="collapse" id="menu-collapse-msfs_communication">       <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">       <li><a data-id="msfs_communication-presentation_globale" href="msfs_communication-presentation_globale.html" class="link-dark rounded">Présentation générale</a></li>       <li><a data-id="msfs_communication-simconnect_presentation" href="msfs_communication-simconnect_presentation.html" class="link-dark rounded">SimConnect et WASM</a></li>       <li><a data-id="msfs_communication-canbus_presentation" href="msfs_communication-canbus_presentation.html" class="link-dark rounded">CAN Bus</a></li>       <li><a data-id="msfs_communication-canbus_message" href="msfs_communication-canbus_message.html" class="link-dark rounded">CAN Bus (messages)</a></li>       </ul></li><li class="mb-1">   <button id="menu-collapse-button-fabrication" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#menu-collapse-fabrication" aria-expanded="false">Fabrication   </button>   <div class="collapse" id="menu-collapse-fabrication">       <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">       <li><a data-id="fabrication-panel" href="fabrication-panel.html" class="link-dark rounded">Façades</a></li>       <li><a data-id="fabrication-alimentation" href="fabrication-alimentation.html" class="link-dark rounded">Alimentation électrique</a></li>       </ul></li><li class="mb-1">   <button id="menu-collapse-button-modules" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#menu-collapse-modules" aria-expanded="false">Modules   </button>   <div class="collapse" id="menu-collapse-modules">       <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">       <li><a data-id="modules-fcudisplay" href="modules-fcudisplay.html" class="link-dark rounded">FCU Display</a></li>       </ul></li></ul>
+            </div>
+          </nav>
+      
+          <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="pb-5">
+              <div class="bg-light p-5 rounded mt-5 mb-4">
+                <h1 id="title">Communication avec MSFS - SimConnect et WASM</h1>
+                <p id="description" class="lead">Présentation de l'utilisation de SimConnect et WASM pour la communication avec le cockpit</p>
+              </div>
+              
+
+<h2>Variables dans MSFS 2020</h2>
+Les informations de l'avion sont contenues dans les variables MSFS. Il existe plusieurs type de variables :
+<p class="mt-3 mb-5">
+    <table class="table">
+        <tr>
+            <th>SimVar</th>
+            <td>Les varaibles "native" à flight simulateur</td>
+        </tr>
+        <tr>
+            <th>LVar</th>
+            <td>Les varaibles définit spécifiquement par l'avion</td>
+        </tr>
+        <tr>
+            <th>Autres</th>
+            <td><i>à définir</i></td>
+        </tr>
+    </table>
+    
+    La combinaison des ces varaibles permet en théorie de lire tous les données de l'avion. L'A32NX de FBW propose d'ailleurs une documentation permettant de connaitre le détails des
+    variables dont l'avion dispose: <a href="https://docs.flybywiresim.com/fbw-a32nx/a32nx-api/a32nx-flightdeck-api" target="_blank">https://docs.flybywiresim.com/fbw-a32nx/a32nx-api/a32nx-flightdeck-api/</a>
+</p>
+
+<p>Les Simvars sont récupérables par la librairie officiel de Microsoft Flight simulator.<p>
+    Pour les LVar il faut passer par une autre solution :
+    <ul>
+        <li>
+            Utilisation de FSUIPC <a href="http://www.fsuipc.com" target="_blank">http://www.fsuipc.com</a><br>
+            <i>Essayé et tout à fait fonctionnel, une dll est disponible pour C#, possibilité par Websocket...</i>
+        </li>
+        <li>
+            Utilisation de SpadNX<br>
+            <i>Non essayé</i>
+        </li>
+        <li>
+            Passer par module WASM dévolppé en <code>C++</code><br>
+            <i>
+                
+            </i>
+        </li>
+    </ul>
+</p>
+
+<h3>Choix de la solution pour les LVar</h3>
+<p>
+    J'ai choisi de passer par le développement d'un module WASM.<br>
+    A l'heure actuelle ne connaissant pas toutes les types de variables
+    à récupérer, ne pas être dépandant d'une librairie tiers me laissera peut-être plus de liberté par la suite.
+</p>
+
+<p>
+    Le développement d'un module WASM est proposé par MSFS pour par exemple développer des addons. 
+    Ici il servira uniquement de passerelle pour récupérer les LVar.<br>
+    Le repo git du module est ici : <a href="https://github.com/rguilbeau/A320_Cockpit_WASM" target="_blank">https://github.com/rguilbeau/A320_Cockpit_WASM</a>
+</p>
+
+<h2>Lecture d'une <strong>SimVar</strong></h2>
+<center>
+    <div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2023-01-16T21:30:06.345Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36\&quot; etag=\&quot;QKz67BEaTaAzltQsg-YF\&quot; version=\&quot;20.8.5\&quot; type=\&quot;device\&quot;&gt;&lt;diagram id=\&quot;8S7ezao99LDPRGqu9Bz4\&quot; name=\&quot;Page-1\&quot;&gt;5Vpbc9o4FP41PIaxLd94BBLa7YRMd9hsN/vSEbYM2hqLyiJAf30lLOOLBGsSA00KmcQ6usQ63/k+nWPogOFi84HC5XxMQhR3LCPcdMBtx7JMy7T5H2HZZhbP8zLDjOJQDioME/wDSaMhrSscorQykBESM7ysGgOSJChgFRuklKyrwyISV//rEs6QYpgEMFatX3DI5pnVt7zC/hHh2Tz/z6bby3oWMB8sd5LOYUjWJRO464AhJYRlV4vNEMXCeblfsnmjA737G6MoYU0mJGD8kE4eFz3/GXofvz8ZD+vPN3KVZxiv5IbHk9GEW8Rb3jfb5s6gZJWESKxndMBgPccMTZYwEL1rDj+3zdki5i2TX0Y4jockJnQ3F4QQ+VHA7Smj5Bsq9biBj6YR71F3lN8eogxtSia5ww+ILBCjWz5kH3DyrmW4mT3ZXhfgOXlszUvA+dIGZbzM9ksXLuUX0quneFh1Iwp5iMkmoWxOZiSB8V1hHVQdXYy5J2Qp3fsfYmwr+QJXjFSdjzaY/SOmdz1HNp9KXbcbufSusc0bCd9weZZoP5U7i3m7Vj4xZZCyvmAbNwQxTFMc5OYRjvc3lYT5oIQkKLPIfuMY/ilZ0QAdcbIllQHSGWJHxkkxEgAcjSaKYsjwc1UDdKGxm8o3BbelAUuCE5aWVv4sDEWQAqMapHaduaeN5xfZHRRBut/Ky+PWshRpMLWRfA+nXPMr0QdjPEtEKHAgEWf5QBAYc1Hty44FDsMs0FGKf8Dpbj0RAtJ1fHFn0HFuhYyQhMkwN13ZLonHaAT4Sxs8R+moSMr+CJF3U1FpndQYXa4abjb1tHgpAJaA3vSqM0gUpTyO69LTAqqmHsOLqZH1IjWyTlKjNygjTU+Yhf3n9J5+eow2xr/0eYX++rSa3ORHXomp9q/P1MYEbELq40nBjdE1vZao6p2BqVpU9RBeJ20wmhK1mjaYjYhaY9F5mWv2rslU01GYar1bph6O6iNHqukDr5rAt8JaszbjfAesmjVN8GKYuasbivluzB00mFJ+NWM7J2cWnBvu8ZRCTDHa1asrmuDMs/z3GAeUpCRi+SR+j7hY6O2Va341swW2Wq6ZrqZcc89VrgEFvy/9yVjU8yRcxQISvu5g96MB8vtKVPODPrCMr0PybYnZ12x63tMuRg7yQ1uHkW9Ngeu2g5GdP8L5ZTCyFYz6y2WGDGgASyBwedOQ1Glj+9eGRHOy3f8tJKtF3yKTe9fT+bbnegCeKdwtp6FvrRZ8qz0znetmgpcr2VrJBM1ew1TQumom2FP4An6vTNA5ykJesnHJNKtMfF0qmK9sVfNLcKnMUAM5Tw3bFsnr5G3XF8n9HgrvKn5N53ApLqMYbeSD6PIz6dqDa9Vc8noVopLunVQA17CLosgKtNiF7tR13BOEUkWujIyhQWZvfCW/9jmGDA3frkGeKbicVaD+vws59YUyhVcWausBzIHS/MznbsOPUl52YOr3CV55EDaDz700fGolN85LuNHwsVXRjRzxVo/P7KUV493r2MHagNIHPvN0TY0YW2eqBvS+v8rDyytQ50AS0zJ1PPPC1FGLuT117kZ/TN4zd3SV9GW54/4m3PEuw536FzvOzR3vMHe63e47po6nqwEuSx1f8f2w/8ANg0dVs/jG2fnqasGwVNbVRxP6QyVACwBZXk3bDBUgX4MPOB0f3iy+yJZRqfg6ILj7CQ==&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+</center>
+
+<p>
+    La lecture des SimVar passe directement par la libririe SimConnect:
+    <ul>
+        <li>1 -> 2 : demande de lecture d'une SimVar</li>
+        <li>3 -> 4 : récupération de la valeur de la Simvar par SimConnect</li>
+        <li>5 -> 6 : retour de la valeur de la SimVar à l'application de transfert</li>
+        <li>Envoi de la frame consrtuite par l'application de transfert aux modules du Cockpit via le CAN Bus</li>
+    </ul>
+</p>
+
+
+<h2>Lecture d'une <strong>LVar</strong></h2>
+<center>
+    <div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2023-01-16T21:29:44.684Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36\&quot; etag=\&quot;c9juzVixb-esCaqXY145\&quot; version=\&quot;20.8.5\&quot; type=\&quot;device\&quot;&gt;&lt;diagram id=\&quot;8S7ezao99LDPRGqu9Bz4\&quot; name=\&quot;Page-1\&quot;&gt;5Vrdcto8EH0aLslYNv7hEkhIOxMynTL52lx1hC2DWmO5tgjQp/8kLP9KoRCMSShkEmslbazdPUertTvGaLm5j2G0mBAPBR1d8zYd47aj60AHPfaHS7apxLbtVDCPsScGFYIp/oOEUBPSFfZQUhlICQkojqpCl4QhcmlFBuOYrKvDfBJU/2sE50gSTF0YyNJv2KOLVOrodiH/hPB8kf1nYPXTniXMBouVJAvokXVJZNx1jFFMCE2vlpsRCrjxMruk88av9OY3FqOQHjIhNCaPyfRp2XdeoP3p97P2uP7SFVpeYLASC55Mx1Mm4V9x33SbGSMmq9BDXJ/WMYbrBaZoGkGX966Z+5lsQZcBawF26eMgGJGAxLu5hgeR47tMntCY/EKlHst10MxnPfKKsttDMUWbkkis8B6RJaLxlg3JA07ctQg30BftdeE8M4utRclxjpBBES/zXHVhUnYhrHqEhR3JishjESaaJKYLMichDO4K6bBq52LMAyGRsO5PROlWwAWuKKnaHm0w/V66fuaqbnRTNG83QvWusc0aIVvv93KjPI23i3m7VjYxoTCmAw42JnADmCTYzcRjHOQ3FXrZoJCEKJWIfm2f+xOyil20x8a6IAYYzxHdM85Ix3EH7A2mGAWQ4pcqBTQeGbojgc9UBssDnDFWrTgYBngecmszWyGGoyGHCGa0NRAdS+x5aSyhBP+Bs50+buWI4JDulmIOO+YtByoJqYgkYIl2CZ7jscE+Sv/sC3gJszlHi5up0KAKyyzyeoZw7cEeEdq+8FUWqrqgNoX4fsJCpe7C/Cbe7tX++8G7/Ta823/D+z8HVEsCqn4FQO03B1TQz9KeU4HabwunQE5vWgRqCZzPpa6/AbWEzecKND/4xtx7X3jXJbwDZbB8LLxnEd/Izqw71mmA37YOeLUPWwO8/ibA60cB/p9DaraHFUi1rgGpr517j0Zql0eQDRqBKqgdkc8HVZl/p3g5Sld+4/H5VsDsN5zF7GpOd4ZNJTgTPOBZDHGM0a7os4pDnBqe/Z5gNyYJ8Wk2id0jLhR9vJqHU615GD255gEsRc3DOlfNA9jvKLfSDqXaam4FjsmtRNpUTqy0amJVZF9FbgVOYmzjQMYG5vuibFMCt3ENlG03mFzZhllBdLchAjfbInBD8vG3wXTCq+LEWwWck5ne4e5HweS/V7wmPhwYuvZjRH5FmP5Ip2c9zZK0iRyvpyJpR58ZltUMSfeyByHvhqR7ko8GUZR6xjjALS73y4d2SX3f7DmXdgm46MOCdo4oF983Mxb8aEXIbIMp8Nq7hn2zsccFXV6GzNRtK5pO3Tdbe3gA5OTo4T9+aGmQXBFg9GqryLVv2QY8036nmweSq342cpVrBexU2bR1L3Pka9W6t3YUdJ9ul19Xfe1+4HvWcmQrjuySWZMFjPilH6CNoHc1079Sti4Zveqh0l501BGu5jrf93VX6TrPmllmAYzajqD05WGFNNnBZQdqCgfmwhMftORJjIggp1eLjHQfFbOK4JAV2VVFZr+mKLWEpOgNlKkMvMuUdQ98snJ4vJTTFuU6X4mXhsPAqofBmb0nH0Im2QlxPHpqlJl9k3/ljCX9KBl798ndqEhRJEce/GKSBRSMrZ/psKEGjszQVwkcsxXg2PXq+JmBIyeKOXDuxp+n14wc1TG9XeSoC5ZXhxyrHeTUX708M3Lkl3ly5Nzc3FwxcGzVIaFd4Mjb/WjwyATDJ5mx2MLp+coYHF+JKGPsTflfOyQ04KB66mxpsoMchX+M4/3DmsWb5imSivf1jbv/AQ==&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+</center>
+
+
+<p>
+    La lecture des LVar passe par le module WASM mais pour communiquer avec ce dernier il est nécessaire d'utiliser SimConnect:
+    <ul>
+        <li>1 -> 2 : demande de lecture d'une LVar</li>
+        <li>3 -> 4 : récupération de la valeur de la LVar par le module WASM</li>
+        <li>5 -> 6 : retour de la valeur de la LVar à l'application de transfert</li>
+        <li>Envoi de la frame consrtuite par l'application de transfert aux modules du Cockpit via le CAN Bus</li>
+    </ul>
+</p>
+
+<script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+
+
+            </div>
+          </main>
+        </div>
+      </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/svg-pan-zoom-container"></script>
+    <script>
+        const CURRENT_PAGE = 'msfs_communication-simconnect_presentation';
+        const CURRENT_CATEGORY = 'msfs_communication';
+    </script>
+    <script src="../SvgZoom.js?v=mIJYe"></script><script src="../app.js?v=mIJYe"></script>
+</body>
+</html>

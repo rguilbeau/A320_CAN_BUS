@@ -1,7 +1,7 @@
 var CANBUS_FRAMES = [
     {
         id : "0x064",
-        source: 'FS2020',
+        source: 'MFSF',
         period: 'à la demande',
         destination: 'FCU_Display',
         description: "Informations relatives à l'afficheur du FCU",
@@ -48,7 +48,7 @@ var CANBUS_FRAMES = [
             },
             {
                 value: 'I',
-                info: ['0 - Navigation standard, 1 - navigation LAT']
+                info: ['0 - information LAT non affichée, 1 - information LAT affichée']
             },
             {
                 value: 'I',
@@ -106,18 +106,50 @@ var CANBUS_FRAMES = [
     },
     {
         id : "0x0C8",
-        source: 'all',
+        source: 'FS2020, FCU_panel',
         period: 'à la demande',
         destination: 'all',
-        description: "Niveau de rétroéclairage",
-        size : 1,
+        description: "Rétroaiclairage / lumière indicateurs",
+        size : 2,
         bits: [
+            {
+                value: 'T',
+                info : [
+                    "Tests des lumières d'indicateurs, allume toutes les LED des boutons et des afficheurs",
+                    "0 - inactif, 1 - actif"
+                ]
+            },
+            {
+                value: '0000000 ',
+                info: ["Inutilisé"]
+            },
             {
                 value : "FFFFFFFF ",
                 info : [
                     "Rétroéclairage des écrans du FCU (de 0 à 100%)"
                 ]
             }
+        ]
+    },
+    {
+        id : "0x12C",
+        source: 'MSFS',
+        period: 'à la demande',
+        destination: 'all',
+        description: "Electricité",
+        size : 2,
+        bits: [
+            {
+                value: 'B',
+                info : [
+                    "Alimentation électrique du Bus AC 1",
+                    "1 - allimenté, 0 - inactif"
+                ]
+            },
+            {
+                value: '0000000 ',
+                info: ["Inutilisé"]
+            },
         ]
     }
 ];

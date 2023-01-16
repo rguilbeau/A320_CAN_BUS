@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>A320 Home cockpit - Façades</title>
+    <title>A320 Home cockpit - Présentation générale</title>
     <meta name="theme-color" content="#0D6EFD">
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -18,103 +18,35 @@
           <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="pb-5">
               <div class="bg-light p-5 rounded mt-5 mb-4">
-                <h1 id="title">Fabrication - Façades</h1>
-                <p id="description" class="lead">Détails technique de la fabrication et la découpe des façades des modules</p>
+                <h1 id="title">Communication avec MSFS - Présentation générale</h1>
+                <p id="description" class="lead">Présenation générale de la communication au sein du cockpit</p>
               </div>
-              <h2>Présentation</h2>
+              <h2>Vue globale</h2>
 
 <p>
-    Pour permettre de faire un rétroéclairage, les façades des modules sont consrtuite en superposant plusieurs couches:
-    <ul>
-        <li>1 plaque de plexiglass de 1.5mm</li>
-        <li>
-            1 film diffuseur blanc<br>
-            <i>
-                Utilisation d'un papier de rétroéclairage pour TV 
-                <a href="https://fr.aliexpress.com/item/1005003932910041.html?spm=a2g0o.store_pc_allProduct.0.0.4a6d67cfvn40hu&pdp_ext_f=%7B%22sku_id%22%3A%2212000027499148646%22%2C%22ship_from%22%3A%22CN%22%7D&gps-id=pcStoreJustForYou&scm=1007.23125.137358.0&scm_id=1007.23125.137358.0&scm-url=1007.23125.137358.0&pvid=63632300-7a9f-4045-a2f1-774657552588&gatewayAdapt=glo2fra" target="_blank">
-                    TV LED Backlight Reflective Paper
-                </a>
-            </i>
-        </li>
-        <li>1 plaque de plexiglass de 5mm</li>
-        <li>des entretoises d'une distance de 20mm</li>
-        <li>Une bande LED pour le rétroéclairage <i>(12V SMD5050)</i></li>
-        <li>1 plaque de plexiglass de 5mm</li>
-    </ul>
-
-    <p>
-        Le premier plexiglass de 1.5mm est peint sur l'arrière et ensuite gravé au laser (enlèvement de la peinture) pour laisser apparaitre les textes et dessins à rétroéclairer<br>
-        Les LEDs sont ajoutées sur la deuxième plaque de plexiglasse de 5mm (le fond) et tous les éléments (boutons, écrans, switch...) sont fixés dessus.
-    </p>
-
-    <div class="alert alert-success" role="alert">
-        Cette solution à pour but de protéger la peinture qui accroche difficilement sur le plastique
-    </div>
-
-    <div class="text-center">
-        <img src="../src/fabrication/panel//facade.png"/>
-    </div>
+    Pour faire fonctionner le cockpit il est obligatoire de récupérer les informations de l'état
+    de l'avion dans dans MSFS et de lui envoyer des commandes.
 </p>
 
-<h2>Découpe des façades</h2>
+<p>
+    Cette vue montre grossièrement la communication entre les différentes partie du projet :
+    <center>
+        <div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2023-01-16T21:50:19.686Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36\&quot; version=\&quot;20.8.5\&quot; etag=\&quot;Cgs-wWAhgPAz_rwwVp8o\&quot; type=\&quot;device\&quot;&gt;&lt;diagram id=\&quot;wSqkT9EM07Gz1jAP4Sfk\&quot; name=\&quot;Page-1\&quot;&gt;1Vddb9sgFP010baHTTbEdvqYOO32kmmSVXXdS0Vs7LBi42HSOP31u8TE32m3KlW3RErgABe453CwJ9hPy8+S5JuViCifICsqJ3g5QchG9hT+NLKvEM/zKiCRLDKdGiBgj9SAlkG3LKJFp6MSgiuWd8FQZBkNVQcjUopdt1sseHfWnCR0AAQh4UP0hkVqU6Ez5DX4F8qSzXFm272oWlJy7Gx2UmxIJHYtCF9OsC+FUFUpLX3KdfKOeanGXZ1orRcmaab+ZEDy8DOeFXd7nvy4da+/+3fJvvxoojwQvjUbnuc5ZyFRTGSaNqoTLklWxFQqDbxjWSxkajq4HOZerCWUEl2C/19bvaPFHCPrzhfhfc5Ug5pUqP0xv1Jss4jqJVrQvNswRYOchLp1B4oCbKNSDjUbijHj3BdcyMNYHDl0Fk0BL5QU97TVMkNr7Lr1fA+wdlqezJtdswEypiKlSu6hixmApkbCRsF4agjdNXqwPYNtWlpwDUaMBJM6dMMSFAxRf0EaGpC2YqEUhYg1Q1f8sARkBSzdZpwoSAqy3q+Cq+DDedNP6CwOx9LvhjO6jl8n/XWq3yz900H6B2mFs57rYsxpOdcuBLmgWWSKy5CTomBV6ohUQ7iV9C5DkDS5/64rn5xj9db0PFSWZbvncm9qPeriOEbhKHWRu3ad5uTQaGCPPeJg32IrQ/qUyeBxhtsMWiMM1qCkIGP20F3JGK9mjm+CZaqREMZWR0IO7kmj2oEZ1bbQZwJNrV4gYDOhahDoILN64y9Xnj20a3/+FYDFdTDQIBw51ZUSAWfItM6AQQp8L/TBBK/nc9OQsijSwxeSFuyRrA+htHxyvaPDHp3FxFnqWFsliuq2tp/U0SnlncEaaic+0uEMrWE2oqs+/WdzhkroXX6ON+AZjTd29FfjIlMtvPqMGvLh8zqG7KC3NmTb/Q8dmZZMtYZB7bbV0gzSlRMuTm14AvLG+L5wPUzO7eJVv8rinns6eTuzt3sejZ0Xmj3qBUL9QK9t9t5A1fBE55v3HH3oXJJqo6h+AbmZB6t/7BqohXhKume5BrqGhMaeEKfnuQeg2ryxVUw377348jc=&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+    </center>
+</p>
 
-<p>Configuration de la CNC pour la découpe des plexiglass de 1.5mm et 5mm:</p>
-<table class="table">
-    <tbody>
-        <tr>
-            <th>Fraise</th>
-            <td>Carbure hélicoïdale 1 dent 1.5mm</td>
-        </tr>
-        <tr>
-            <th>Vitesse broche</th>
-            <td>10 000 tr/min</td>
-        </tr>
-        <tr>
-            <th>Avance de coupe</th>
-            <td>200 mm/min</td>
-        </tr>
-        <tr>
-            <th>Librifiant</th>
-            <td>Eau</td>
-        </tr>
-        <tr>
-            <th>Hauteur de passe</th>
-            <td>0.3 mm</td>
-        </tr>
-    </tbody>
-</table>
+<p>
+    <ul>
+        <li>Les informations de l'avion dans MSFS sont récupérées par l'application de transfert "A320_Cockpit" écrit en C# via SimConnect et un module WASM</li>
+        <li>L'application "A320_Cockpit" réorganise les informations en frames complètes et les envoies au CAN Bus</li>
+        <li>Le cockpit récéptionne les messages du CAN Bus et les traites</li> 
+    </ul>
+</p>
 
-<h2>Peinture et gravure</h2>
-<p>Configuration peindre et graver les plexiglass:</p>
+<p>Les sections suivantes décrivent plus précisément chaque partie.</p>
 
-<table class="table">
-    <tbody>
-        <tr>
-            <th>Peinture</th>
-            <td>
-                <a href="https://www.surdiscount.com/fr/bombe-de-peinture-vehicule-carrosserie/22133-bombe-de-peinture-carrosserie-voiture-racing-ral5014-bleu-pigeon-400ml-4015962061354.html" target="_blank">
-                    Bombe de peinture carrosserie voiture Racing RAL5014 bleu pigeon
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <th>Nombre de couche</th>
-            <td>??</td>
-        </tr>
-        <tr>
-            <th>Laser</th>
-            <td>2.5W</td>
-        </tr>
-        <tr>
-            <th>Puissance laser</th>
-            <td>?%, Power dynamique, Power constant ?</td>
-        </tr>
-        <tr>
-            <th>Vitesse laser</th>
-            <td>? mm/min</td>
-        </tr>
-    </tbody>
-</table>
+
+<script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
             </div>
           </main>
         </div>
@@ -125,8 +57,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/svg-pan-zoom-container"></script>
     <script>
-        const CURRENT_PAGE = 'fabrication-panel';
-        const CURRENT_CATEGORY = 'fabrication';
+        const CURRENT_PAGE = 'msfs_communication-presentation_globale';
+        const CURRENT_CATEGORY = 'msfs_communication';
     </script>
     <script src="../SvgZoom.js?v=mIJYe"></script><script src="../app.js?v=mIJYe"></script>
 </body>

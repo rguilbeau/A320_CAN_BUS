@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>A320 Home cockpit - Façades</title>
+    <title>A320 Home cockpit - CAN Bus</title>
     <meta name="theme-color" content="#0D6EFD">
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -18,103 +18,67 @@
           <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="pb-5">
               <div class="bg-light p-5 rounded mt-5 mb-4">
-                <h1 id="title">Fabrication - Façades</h1>
-                <p id="description" class="lead">Détails technique de la fabrication et la découpe des façades des modules</p>
+                <h1 id="title">Communication avec MSFS - CAN Bus</h1>
+                <p id="description" class="lead">Intégration du CAN Bus dans le cockpit</p>
               </div>
               <h2>Présentation</h2>
 
 <p>
-    Pour permettre de faire un rétroéclairage, les façades des modules sont consrtuite en superposant plusieurs couches:
-    <ul>
-        <li>1 plaque de plexiglass de 1.5mm</li>
-        <li>
-            1 film diffuseur blanc<br>
-            <i>
-                Utilisation d'un papier de rétroéclairage pour TV 
-                <a href="https://fr.aliexpress.com/item/1005003932910041.html?spm=a2g0o.store_pc_allProduct.0.0.4a6d67cfvn40hu&pdp_ext_f=%7B%22sku_id%22%3A%2212000027499148646%22%2C%22ship_from%22%3A%22CN%22%7D&gps-id=pcStoreJustForYou&scm=1007.23125.137358.0&scm_id=1007.23125.137358.0&scm-url=1007.23125.137358.0&pvid=63632300-7a9f-4045-a2f1-774657552588&gatewayAdapt=glo2fra" target="_blank">
-                    TV LED Backlight Reflective Paper
-                </a>
-            </i>
-        </li>
-        <li>1 plaque de plexiglass de 5mm</li>
-        <li>des entretoises d'une distance de 20mm</li>
-        <li>Une bande LED pour le rétroéclairage <i>(12V SMD5050)</i></li>
-        <li>1 plaque de plexiglass de 5mm</li>
-    </ul>
-
-    <p>
-        Le premier plexiglass de 1.5mm est peint sur l'arrière et ensuite gravé au laser (enlèvement de la peinture) pour laisser apparaitre les textes et dessins à rétroéclairer<br>
-        Les LEDs sont ajoutées sur la deuxième plaque de plexiglasse de 5mm (le fond) et tous les éléments (boutons, écrans, switch...) sont fixés dessus.
-    </p>
-
-    <div class="alert alert-success" role="alert">
-        Cette solution à pour but de protéger la peinture qui accroche difficilement sur le plastique
-    </div>
-
-    <div class="text-center">
-        <img src="../src/fabrication/panel//facade.png"/>
-    </div>
+  Le cockpit est découpés en plusieurs modules indépendent les uns des autres.<br>
+  Chaque module est controlé grâce à son micro-controlleur et ne gère que sa partie.<br>
+  <i>Par exemple, il existe le module FCU_Display qui ne s'occupe que de la gestion des écrans du FCU</i>
 </p>
 
-<h2>Découpe des façades</h2>
+<p>
+  Les modules on néanmoins besoin de communiquer entre eux et surtout avec MSFS (au travers de l'application de transfert "A320_Cockpit").<br>
+  Pour se faire, tous les modules sont connectés entre eux via le CAN Bus. Il est capable de faire transiter des messages identifiés 
+  et chaque module connait les messages dont les informations lui sont essentiel.<br>
+</p>
+<p>
+  <i>
+    Par exemple, Le module FCU_Display doit connaitre les informations de la vitesse, du cap, etc de l'autopilote, ces informations sont contenues dans une frame identifié.<br>
+  </i>
+  </p>
+  <p>
+  Les messages contiennent des données burt (vitesse=250knots,cap=320,vitesse-managé=true etc...) le choix d'allumer tel ou tel LED, d'afficher tel ou tel information sur un écran est délégué au module, ils ont une logique de programmée.
+  </p>
+  <p>
+    
+  <strong>Attention cependant, un module n'est pas limité à un seul message, plusieurs messages peuvent lui être important</strong>
+  </p>
+  <p>
+  
+    <center>
+      <div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2023-01-05T18:47:25.598Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36\&quot; etag=\&quot;iOeuP3xMhVGwNiRooRGh\&quot; version=\&quot;20.8.1\&quot; type=\&quot;device\&quot;&gt;&lt;diagram id=\&quot;-o28_a95GBK_GpdNQeRj\&quot; name=\&quot;Page-1\&quot;&gt;7Vpbb5swGP01kbYHIsDc8pimTffQmxRV254qFxzw5uDIcZqkv34mmIBxmrVrB1TJU/IdX8DnfN+xQfTAaLa+ZHCeXNMIkZ5tRuseOO/Ztm16lvjJkE2O+L6fAzHDUQ5ZJTDBz0iCpkSXOEILpSOnlHA8V8GQpikKuYJBxuhK7TalRL3qHMZIAyYhJDr6HUc8ydHA9kv8G8JxUlzZ8gZ5ywwWneVKFgmM6KoCgYseGDFKef5vth4hkpFX8JKPG7/QursxhlL+mgF4aC2Dh+fJ/eD25h5f3d0+BGOjoHnBN8WKUSQIkCFlPKExTSG5KNEzRpdphLJpTRGVfa4onQvQEuAvxPlGqgmXnAoo4TMiW9Ea8x/Z8L7tyvBnpel8LafeBpsiSKNhJqgIU5qiHBljQmS7zoekaEGXLESHSMj7ZQuvDJQsXiI6Q5xtRAeGCOT4Sc0MKBMs3vXbDb2jWNyKbe6KQZItSwEAU52CQxYjLkeVSoo/ldsooa2+b9BacN2q1v4xae3VtDab1Vre8BMkS7mE8ehek18Vd5VgjiZzuOVvJexcFXIq6B9RQtl2LIhcFESOwBec0d+o0hLYj8DzDqn0hBhH64P8F62+yqM1kPGqNGOrcNikYsSe+bJkCtlvriLvVEWG3UwVOXXHbLiKil3+qHfHhrQGTsu7o+aY15/SMYHVNce0nFMVGaAhxwzarSLrdMZsTGu37pgN745Ac8yrzE2MOUyzlwCfzjkdt3PO2fJZsxPO6TRTTZ7dsnO2fNbshHM2pXV9l2zYOR3NOfv9/id0THfQNccMToZpuM0UEWj5ea3lp4pO+GVDUg/atUtXs8s7MZH5ZTyxTdv8+rHGCVEwDfcZpxcG6HH6TuPsjFF6Gqd6OWlpW6FN5fhFSv6amRUC3D3rL7B3JrBRN6t6BueVpmWwNpFvtVsK/nHLVt9j/lm2pg/3gabbaHgjACMjTvCmqSiMhKvSqYYkpa26l4QgwXEqwlCIigR+ltkSDiEZyoYZjqLtbrjPGV+ZIK8/IxpW7SW+Hbia9/l7cqgu0cc9VQ8OiEFE4RyPFsD6b1qIsPy2Ia+j8gsRcPEH&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+      <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+    </center>
+</p>
 
-<p>Configuration de la CNC pour la découpe des plexiglass de 1.5mm et 5mm:</p>
-<table class="table">
-    <tbody>
-        <tr>
-            <th>Fraise</th>
-            <td>Carbure hélicoïdale 1 dent 1.5mm</td>
-        </tr>
-        <tr>
-            <th>Vitesse broche</th>
-            <td>10 000 tr/min</td>
-        </tr>
-        <tr>
-            <th>Avance de coupe</th>
-            <td>200 mm/min</td>
-        </tr>
-        <tr>
-            <th>Librifiant</th>
-            <td>Eau</td>
-        </tr>
-        <tr>
-            <th>Hauteur de passe</th>
-            <td>0.3 mm</td>
-        </tr>
-    </tbody>
-</table>
+<h2>Le CAN Bus</h2>
+<h3>Trame d'un message</h3>
+<p>
+  <div class="text-center">
+    <img src="../src/msfs_communication/canbus_presentation//can-trame.webp">
+  </div>
+</p>
 
-<h2>Peinture et gravure</h2>
-<p>Configuration peindre et graver les plexiglass:</p>
+<h3>Module CANable</h3>
+<p>Le module CANable permet de décoder le bus CAN venant du cockpit via un port USB du PC.</p>
 
-<table class="table">
-    <tbody>
-        <tr>
-            <th>Peinture</th>
-            <td>
-                <a href="https://www.surdiscount.com/fr/bombe-de-peinture-vehicule-carrosserie/22133-bombe-de-peinture-carrosserie-voiture-racing-ral5014-bleu-pigeon-400ml-4015962061354.html" target="_blank">
-                    Bombe de peinture carrosserie voiture Racing RAL5014 bleu pigeon
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <th>Nombre de couche</th>
-            <td>??</td>
-        </tr>
-        <tr>
-            <th>Laser</th>
-            <td>2.5W</td>
-        </tr>
-        <tr>
-            <th>Puissance laser</th>
-            <td>?%, Power dynamique, Power constant ?</td>
-        </tr>
-        <tr>
-            <th>Vitesse laser</th>
-            <td>? mm/min</td>
-        </tr>
-    </tbody>
-</table>
+<h3>Configuration</h3>
+<p>
+    Le CANable fonctionne sur les bauds rates suivants:
+    <table class="table">
+      <tr>
+        <th>Serial baud rate</th>
+        <td>9600</td>
+      </tr>
+      <tr>
+        <th>CAN Bus baud rate</th>
+        <td>125 kbits</td>
+      </tr>
+    </table>
+</p>
             </div>
           </main>
         </div>
@@ -125,8 +89,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/svg-pan-zoom-container"></script>
     <script>
-        const CURRENT_PAGE = 'fabrication-panel';
-        const CURRENT_CATEGORY = 'fabrication';
+        const CURRENT_PAGE = 'msfs_communication-canbus_presentation';
+        const CURRENT_CATEGORY = 'msfs_communication';
     </script>
     <script src="../SvgZoom.js?v=mIJYe"></script><script src="../app.js?v=mIJYe"></script>
 </body>

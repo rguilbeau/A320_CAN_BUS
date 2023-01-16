@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>A320 Home cockpit - Façades</title>
+    <title>A320 Home cockpit - Environement de développement</title>
     <meta name="theme-color" content="#0D6EFD">
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -18,103 +18,41 @@
           <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="pb-5">
               <div class="bg-light p-5 rounded mt-5 mb-4">
-                <h1 id="title">Fabrication - Façades</h1>
-                <p id="description" class="lead">Détails technique de la fabrication et la découpe des façades des modules</p>
+                <h1 id="title">Introduction - Environement de développement</h1>
+                <p id="description" class="lead">Outils à installer pour le développement et la maintenance</p>
               </div>
-              <h2>Présentation</h2>
-
+              <h2>CANtact (USB-CAN Bus)</h2>
 <p>
-    Pour permettre de faire un rétroéclairage, les façades des modules sont consrtuite en superposant plusieurs couches:
-    <ul>
-        <li>1 plaque de plexiglass de 1.5mm</li>
-        <li>
-            1 film diffuseur blanc<br>
-            <i>
-                Utilisation d'un papier de rétroéclairage pour TV 
-                <a href="https://fr.aliexpress.com/item/1005003932910041.html?spm=a2g0o.store_pc_allProduct.0.0.4a6d67cfvn40hu&pdp_ext_f=%7B%22sku_id%22%3A%2212000027499148646%22%2C%22ship_from%22%3A%22CN%22%7D&gps-id=pcStoreJustForYou&scm=1007.23125.137358.0&scm_id=1007.23125.137358.0&scm-url=1007.23125.137358.0&pvid=63632300-7a9f-4045-a2f1-774657552588&gatewayAdapt=glo2fra" target="_blank">
-                    TV LED Backlight Reflective Paper
-                </a>
-            </i>
-        </li>
-        <li>1 plaque de plexiglass de 5mm</li>
-        <li>des entretoises d'une distance de 20mm</li>
-        <li>Une bande LED pour le rétroéclairage <i>(12V SMD5050)</i></li>
-        <li>1 plaque de plexiglass de 5mm</li>
-    </ul>
+    Télécharger ce fichier zip 
+    <a href="https://github.com/rguilbeau/A320_Documentation/tree/main/_assets/driver" target="_blank">https://github.com/rguilbeau/A320_Documentation/tree/main/_assets/driver</a> 
+    (ou depuis le site de l'éditeur <a href="https://canable.io/" target="_blank">https://canable.io/</a>) 
+    extraire sont contenu et installer le grâce au clique droit sur le fichier .inf puis "Installer"
+</p>
+    
+<p>Vérifier dans le gestionnaire de périphérique, il devrait être visible en tant que Ports (COM et LPT).
 
-    <p>
-        Le premier plexiglass de 1.5mm est peint sur l'arrière et ensuite gravé au laser (enlèvement de la peinture) pour laisser apparaitre les textes et dessins à rétroéclairer<br>
-        Les LEDs sont ajoutées sur la deuxième plaque de plexiglasse de 5mm (le fond) et tous les éléments (boutons, écrans, switch...) sont fixés dessus.
-    </p>
+    <div class="alert alert-warning" role="alert">
+        Le COM Port doit indiquer <strong>CANtact</strong>. Si ce n’est pas le cas, aller sur cette page <a href="https://canable.io/updater/" target="_blank">https://canable.io/updater/</a> du constructeur 
+        et suivre les instructions pour flasher le CANable sur le firmware <code>slcan</code>
+      </div>
 
-    <div class="alert alert-success" role="alert">
-        Cette solution à pour but de protéger la peinture qui accroche difficilement sur le plastique
-    </div>
-
-    <div class="text-center">
-        <img src="../src/fabrication/panel//facade.png"/>
-    </div>
+    <div class="text-center ">
+        <img src="../src/introduction/environement_dev//gestionnaire-peripherique.png" class="rounded">
+    </div>                    
 </p>
 
-<h2>Découpe des façades</h2>
+<h2>MSFS SDK</h2>
+<p><i>TODO</i></p>
 
-<p>Configuration de la CNC pour la découpe des plexiglass de 1.5mm et 5mm:</p>
-<table class="table">
-    <tbody>
-        <tr>
-            <th>Fraise</th>
-            <td>Carbure hélicoïdale 1 dent 1.5mm</td>
-        </tr>
-        <tr>
-            <th>Vitesse broche</th>
-            <td>10 000 tr/min</td>
-        </tr>
-        <tr>
-            <th>Avance de coupe</th>
-            <td>200 mm/min</td>
-        </tr>
-        <tr>
-            <th>Librifiant</th>
-            <td>Eau</td>
-        </tr>
-        <tr>
-            <th>Hauteur de passe</th>
-            <td>0.3 mm</td>
-        </tr>
-    </tbody>
-</table>
+<h2>Visual Studio</h2>
+<h3>Développement application de transfets d'informations "A320_Cockpit"</h3>
+<p><i>TODO</i></p>
 
-<h2>Peinture et gravure</h2>
-<p>Configuration peindre et graver les plexiglass:</p>
+<h3>Développement module WASM</h3>
+<p><i>TODO</i></p>
 
-<table class="table">
-    <tbody>
-        <tr>
-            <th>Peinture</th>
-            <td>
-                <a href="https://www.surdiscount.com/fr/bombe-de-peinture-vehicule-carrosserie/22133-bombe-de-peinture-carrosserie-voiture-racing-ral5014-bleu-pigeon-400ml-4015962061354.html" target="_blank">
-                    Bombe de peinture carrosserie voiture Racing RAL5014 bleu pigeon
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <th>Nombre de couche</th>
-            <td>??</td>
-        </tr>
-        <tr>
-            <th>Laser</th>
-            <td>2.5W</td>
-        </tr>
-        <tr>
-            <th>Puissance laser</th>
-            <td>?%, Power dynamique, Power constant ?</td>
-        </tr>
-        <tr>
-            <th>Vitesse laser</th>
-            <td>? mm/min</td>
-        </tr>
-    </tbody>
-</table>
+<h2>Micro-controlleur</h2>
+<p><i>TODO</i></p>
             </div>
           </main>
         </div>
@@ -125,8 +63,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/svg-pan-zoom-container"></script>
     <script>
-        const CURRENT_PAGE = 'fabrication-panel';
-        const CURRENT_CATEGORY = 'fabrication';
+        const CURRENT_PAGE = 'introduction-environement_dev';
+        const CURRENT_CATEGORY = 'introduction';
     </script>
     <script src="../SvgZoom.js?v=mIJYe"></script><script src="../app.js?v=mIJYe"></script>
 </body>

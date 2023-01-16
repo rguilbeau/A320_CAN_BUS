@@ -6,10 +6,32 @@ nav:
       home:
         title: A320 Home cockpit
         description: Documentation technique du fonctionnement de la reproduction du cockpit A320
+      environement_dev:
+        title: Environement de développement
+        description: Outils à installer pour le développement et la maintenance
+
       documentation:
-        title: Documentation
+        title: Maintien Documentation
         description: Aide mémoire pour maintenir la documentation
-  
+      
+
+  msfs_communication:
+    title : Communication avec MSFS
+    pages:
+      presentation_globale:
+        title : Présentation générale
+        description : Présenation générale de la communication au sein du cockpit
+
+      simconnect_presentation:
+        title : SimConnect et WASM
+        description: Présentation de l'utilisation de SimConnect et WASM pour la communication avec le cockpit
+      canbus_presentation:
+        title : CAN Bus
+        description: Intégration du CAN Bus dans le cockpit
+      canbus_message:
+        title : CAN Bus (messages)
+        description: Détails des messages du CAN Bus
+
   fabrication:
     title: Fabrication
     pages:
@@ -20,16 +42,6 @@ nav:
         alimentation:
           title: Alimentation électrique
           description: Vue générale de l'alimentation électrique du cockpit
-
-  canbus:
-    title: CAN Bus
-    pages:
-      presentation:
-        title : Présentation / drivers
-        description: Vue rapide de l'intégration du CAN Bus dans le cockpit
-      messages:
-        title : Messages
-        description: Définition des messages du CAN Bus
 
   modules:
     title: Modules

@@ -1,0 +1,26 @@
+<h2>Vue globale</h2>
+
+<p>
+    Pour faire fonctionner le cockpit il est obligatoire de récupérer les informations de l'état
+    de l'avion dans dans MSFS et de lui envoyer des commandes.
+</p>
+
+<p>
+    Cette vue montre grossièrement la communication entre les différentes partie du projet :
+    <center>
+        <div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2023-01-16T21:50:19.686Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36\&quot; version=\&quot;20.8.5\&quot; etag=\&quot;Cgs-wWAhgPAz_rwwVp8o\&quot; type=\&quot;device\&quot;&gt;&lt;diagram id=\&quot;wSqkT9EM07Gz1jAP4Sfk\&quot; name=\&quot;Page-1\&quot;&gt;1Vddb9sgFP010baHTTbEdvqYOO32kmmSVXXdS0Vs7LBi42HSOP31u8TE32m3KlW3RErgABe453CwJ9hPy8+S5JuViCifICsqJ3g5QchG9hT+NLKvEM/zKiCRLDKdGiBgj9SAlkG3LKJFp6MSgiuWd8FQZBkNVQcjUopdt1sseHfWnCR0AAQh4UP0hkVqU6Ez5DX4F8qSzXFm272oWlJy7Gx2UmxIJHYtCF9OsC+FUFUpLX3KdfKOeanGXZ1orRcmaab+ZEDy8DOeFXd7nvy4da+/+3fJvvxoojwQvjUbnuc5ZyFRTGSaNqoTLklWxFQqDbxjWSxkajq4HOZerCWUEl2C/19bvaPFHCPrzhfhfc5Ug5pUqP0xv1Jss4jqJVrQvNswRYOchLp1B4oCbKNSDjUbijHj3BdcyMNYHDl0Fk0BL5QU97TVMkNr7Lr1fA+wdlqezJtdswEypiKlSu6hixmApkbCRsF4agjdNXqwPYNtWlpwDUaMBJM6dMMSFAxRf0EaGpC2YqEUhYg1Q1f8sARkBSzdZpwoSAqy3q+Cq+DDedNP6CwOx9LvhjO6jl8n/XWq3yz900H6B2mFs57rYsxpOdcuBLmgWWSKy5CTomBV6ohUQ7iV9C5DkDS5/64rn5xj9db0PFSWZbvncm9qPeriOEbhKHWRu3ad5uTQaGCPPeJg32IrQ/qUyeBxhtsMWiMM1qCkIGP20F3JGK9mjm+CZaqREMZWR0IO7kmj2oEZ1bbQZwJNrV4gYDOhahDoILN64y9Xnj20a3/+FYDFdTDQIBw51ZUSAWfItM6AQQp8L/TBBK/nc9OQsijSwxeSFuyRrA+htHxyvaPDHp3FxFnqWFsliuq2tp/U0SnlncEaaic+0uEMrWE2oqs+/WdzhkroXX6ON+AZjTd29FfjIlMtvPqMGvLh8zqG7KC3NmTb/Q8dmZZMtYZB7bbV0gzSlRMuTm14AvLG+L5wPUzO7eJVv8rinns6eTuzt3sejZ0Xmj3qBUL9QK9t9t5A1fBE55v3HH3oXJJqo6h+AbmZB6t/7BqohXhKume5BrqGhMaeEKfnuQeg2ryxVUw377348jc=&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+    </center>
+</p>
+
+<p>
+    <ul>
+        <li>Les informations de l'avion dans MSFS sont récupérées par l'application de transfert "A320_Cockpit" écrit en C# via SimConnect et un module WASM</li>
+        <li>L'application "A320_Cockpit" réorganise les informations en frames complètes et les envoies au CAN Bus</li>
+        <li>Le cockpit récéptionne les messages du CAN Bus et les traites</li> 
+    </ul>
+</p>
+
+<p>Les sections suivantes décrivent plus précisément chaque partie.</p>
+
+
+<script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
