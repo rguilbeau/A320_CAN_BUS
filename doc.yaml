@@ -43,6 +43,13 @@ nav:
           title: Alimentation électrique
           description: Vue générale de l'alimentation électrique du cockpit
 
+  boutons:
+    title: Boutons
+    pages:
+      push_pull_encoder:
+        title: Push pull encodeur
+        description: Fabrication du bouton push pull encodeur
+
   modules:
     title: Modules
     pages:
