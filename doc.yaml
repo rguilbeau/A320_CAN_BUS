@@ -53,6 +53,9 @@ nav:
   modules:
     title: Modules
     pages:
+      fcu:
+        title: FCU
+        description: Détails technique du module FCU (sans afficheurs)
       fcudisplay:
         title: FCU Display
         description: Détails technique du module des afficheurs du FCU

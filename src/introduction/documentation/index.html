@@ -35,11 +35,11 @@
   Pour intégrer une image dans un document:
   <ul>
     <li>Ajouter le fichier image dans le même dossier que le fichier <code>index.html</code> de votre page</li>
-    <li>Ajouter une balise <code>&lt;img src="[[folder_path]/fichier_image.jpg"/&gt;</code></li>
+    <li>Ajouter une balise <code>&lt;img src="[[folder_path]]/fichier_image.jpg"/&gt;</code></li>
   </ul>
 </p>
 
-<h2>Intégrer des diagrammes</h2>
+<h2>Intégrer des diagrammes (draw.io)</h2>
 <p>
   Pour inserer un diagramme dans un document:
   <ul>
@@ -49,5 +49,24 @@
       Bien vérifier que la case "Inclure une copie de mon diagramme est cochée"
     </li>
     <li>Copier / coller ensuite le HTML dans une page du document</li>
+  </ul>
+</p>
+
+<h2>Intégrer des shéma (EasyEDA)</h2>
+<p>
+  Pour inserer un shéma dessiné avec EasyEDA avec apercu dans une modale:
+  <ul>
+    <li>Dans EasyEDA, cliquer sur Fichiers > Exporter > SVG (tout laisser par défaut)</li>
+    <li>Exporter le dans le même dossier que le fichier <code>index.html</code> de votre page</li>
+    <li>Ajouter la variable <code>[[fichier_schema.svg]]</code> dans la page</li>
+  </ul>
+</p>
+
+<h2>Intégrer des SVG</h2>
+<p>
+  Pour inserer un SVG (avec apercu dans une modale):
+  <ul>
+    <li>Ajouter un fichier <code>.svg</code> dans le même dossier que le fichier <code>index.html</code> de votre page</li>
+    <li>Ajouter la variable <code>[[fichier_svg.svg]]</code> dans la page</li>
   </ul>
 </p>
