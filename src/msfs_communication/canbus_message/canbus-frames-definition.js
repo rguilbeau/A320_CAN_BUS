@@ -1,9 +1,7 @@
 var CANBUS_FRAMES = [
     {
         id : "0x064",
-        source: 'MFSF',
-        period: 'à la demande',
-        destination: 'FCU_Display',
+        title: 'FCU Display',
         description: "Informations relatives à l'afficheur du FCU",
         size : 8,
         bits: [
@@ -105,10 +103,74 @@ var CANBUS_FRAMES = [
         ]
     },
     {
+        id : "0x065",
+        title: 'FCU',
+        description: "Information liées aux FCU",
+        size : 4,
+        bits: [
+            {
+                value: 'A',
+                info : [
+                    "0 - AP1 inactif, 1 - AP1 actif"
+                ]
+            },
+            {
+                value: 'A',
+                info : [
+                    "0 - AP2 inactif, 1 - AP2 actf"
+                ]
+            },
+            {
+                value: 'T',
+                info : [
+                    "0 - A/THR inactif, 1 - A/THR actif"
+                ]
+            },
+            {
+                value: 'L',
+                info : [
+                    "0 - LOC inactif, 1 - LOC actif"
+                ]
+            },
+            {
+                value: 'E',
+                info : [
+                    "0 - Exped activé, 1 - Exped actif"
+                ]
+            },
+            {
+                value: 'A',
+                info : [
+                    "0 - Approche inactif, 1 - Approche actif"
+                ]
+            },
+            {
+                value: '00 ',
+                info : []
+            },
+            {
+                value : "DDDDDDDD ",
+                info : [
+                    "Rétroéclairage des écrans du FCU (de 0 à 255)"
+                ]
+            },
+            {
+                value : "BBBBBBBB ",
+                info : [
+                    "Rétroéclairage des boutons du FCU (de 0 à 255)"
+                ]
+            },
+            {
+                value : "PPPPPPPP ",
+                info : [
+                    "Rétroéclairage du panel du FCU (de 0 à 255)"
+                ]
+            },
+        ]
+    },
+    {
         id : "0x0C8",
-        source: 'FS2020, FCU_panel',
-        period: 'à la demande',
-        destination: 'all',
+        title: 'Backlight global',
         description: "Rétroaiclairage / lumière indicateurs",
         size : 2,
         bits: [
@@ -124,19 +186,17 @@ var CANBUS_FRAMES = [
                 info: ["Inutilisé"]
             },
             {
-                value : "FFFFFFFF ",
+                value : "TTTTTTTT ",
                 info : [
-                    "Rétroéclairage des écrans du FCU (de 0 à 100%)"
+                    "Rétroéclairage des témoins des boutons (de 0 à 255)"
                 ]
-            }
+            },
         ]
     },
     {
         id : "0x12C",
-        source: 'MSFS',
-        period: 'à la demande',
-        destination: 'all',
-        description: "Electricité",
+        title: 'Electricité',
+        description: "Infomrations liées aux bus éléctrique",
         size : 2,
         bits: [
             {

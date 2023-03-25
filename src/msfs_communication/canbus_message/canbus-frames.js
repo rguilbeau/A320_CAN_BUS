@@ -15,10 +15,7 @@ $(document).ready(function(){
 
         html += '<tr>';
         html += '   <td><a href="#' + frame.id + '">' + frame.id + '</a></td>';
-        html += '   <td>' + frame.size + '</td>';
-        html += '   <td>' + frame.period + '</td>';
-        html += '   <td>' + frame.source + '</td>';
-        html += '   <td>' + frame.destination + '</td>';
+        html += '   <td>' + frame.title + '</td>';
         html += '   <td>' + frame.description + '</td>';
         html += '</tr>';
     }
@@ -36,13 +33,13 @@ $(document).ready(function(){
             offset += frame.bits[idxBit].info.length;
         }
         
+        var height = ((offset +1) * 20) + 40;
+
         html += '<hr class="mt-4" />';
-        html += '<div><strong>Source:</strong> '+frame.source+'</div>';
-        html += '<div><strong>Destination:</strong> '+frame.destination+'</div>';
-        html += '<div><strong>Période:</strong> '+frame.period+'</div>';
-        html += '<div><strong>Taille:</strong> '+frame.size+'</div>';
+        html += '<div><strong>Titre:</strong> '+frame.title+'</div>';
         html += '<div><strong>Description:</strong> '+frame.description+'</div>';
-        html += '<div style="height:'+(offset * 22)+'px; min-height:150px" class="can-message pt-3 rounded-3 bg-light" id="' + frame.id + '">';
+        html += '<div><strong>Taille:</strong> '+frame.size+'</div>';
+        html += '<div style="height:'+height+'px;" class="can-message pt-3 rounded-3 bg-light" id="' + frame.id + '">';
         html += '<div>';
         html += '<div class="can-id"><h4><span class="badge bg-success">'+frame.id+'</span></h4></div>';
 
