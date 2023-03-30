@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>A320 Home cockpit - Maintien Documentation</title>
+    <title>A320 Home cockpit - Alimentation électrique</title>
     <meta name="theme-color" content="#0D6EFD">
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -18,81 +18,29 @@
           <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="pb-5">
               <div class="bg-light p-5 rounded mt-5 mb-4">
-                <h1 id="title">Introduction - Maintien Documentation</h1>
-                <p id="description" class="lead">Aide mémoire pour maintenir la documentation</p>
+                <h1 id="title">Modules - Alimentation électrique</h1>
+                <p id="description" class="lead">Vue générale de l'alimentation des modules du Cockpit</p>
               </div>
-              
-<h2>Fonctionnement</h2>
+              <h2>Notes</h2>
 
-<p>La configuration du menu se fait dans le fichier <code>doc.yaml</code> dans l'item <code>nav</code>.</p>
-
-<p>
-  Toutes les pages sont dans le dossier <code>src</code> et la hiérarchie des dossiers doit correspondre à l'architecture de la configuration <code>nav</code> 
-  afin que le script python puisse reconstruire les fichiers html.
-</p>
-
-<h2>Installation</h2>
-<p>
-  La documentation est génée grâce à un script python
-  <ul>
-    <li>Installer <code>python3</code></li>
-    <li>Installer les libraire requis au projet depuis le répertoire <code>builder</code> avec la commande <code>pip install -r requirements.txt</code></li>
-    <li>Lancer la commande <code>python3 build.py</code> depuis le répertoire <code>builder</code></li>
-    <li>Les pages <code>html</code> sont ensuite générées dans le répertoire <code>page</code></li>
-  </ul>
-</p>
-
-<h2>Ajouter une nouvelle page</h2>
-<p>
-  Pour ajouter une nouvelle page:
-  <ul>
-    <li>Créer un nouveau dossier dans <code>src</code> correspondant à la "catégorie"</li>
-    <li>Dans ce dossier créer un sous-dossier correspondant à la "page"</li>
-    <li>Ce dossier doit contenir un fichier <code>index.html</code> qui contiendera le contenu de la doc</li>
-    <li>Tous les fichiers <code>.js</code> et <code>.css</code> dans le dossier seront automatiquement chargés pour cette page</li>
-  </ul>
-</p>
-
-<h2>Integrer des images</h2>
-<p>
-  Pour intégrer une image dans un document:
-  <ul>
-    <li>Ajouter le fichier image dans le même dossier que le fichier <code>index.html</code> de votre page</li>
-    <li>Ajouter une balise <code>&lt;img src="../src/introduction/documentation//fichier_image.jpg"/&gt;</code></li>
-  </ul>
-</p>
-
-<h2>Intégrer des diagrammes (draw.io)</h2>
-<p>
-  Pour inserer un diagramme dans un document:
-  <ul>
-    <li>Créer un diagramme draw.io et l'enregistrer dans le projet au format <code>xml</code> (pas sur le drive)</li>
+<ul>
     <li>
-      Cliquer sur Fichier > intégrer > HTML
-      Bien vérifier que la case "Inclure une copie de mon diagramme est cochée"
+        Une Alim 12v (puissance à déterminer 10A, 20A + ?)
+        <ul>
+            <li><i>Plus simple que deux circuits 5V et 12V</i></li>
+        </ul>
     </li>
-    <li>Copier / coller ensuite le HTML dans une page du document</li>
-  </ul>
-</p>
-
-<h2>Intégrer des shéma (EasyEDA)</h2>
-<p>
-  Pour inserer un shéma dessiné avec EasyEDA avec apercu dans une modale:
-  <ul>
-    <li>Dans EasyEDA, cliquer sur Fichiers > Exporter > SVG (tout laisser par défaut)</li>
-    <li>Exporter le dans le même dossier que le fichier <code>index.html</code> de votre page</li>
-    <li>Ajouter la variable <code>[[fichier_schema.svg]]</code> dans la page</li>
-  </ul>
-</p>
-
-<h2>Intégrer des SVG</h2>
-<p>
-  Pour inserer un SVG (avec apercu dans une modale):
-  <ul>
-    <li>Ajouter un fichier <code>.svg</code> dans le même dossier que le fichier <code>index.html</code> de votre page</li>
-    <li>Ajouter la variable <code>[[fichier_svg.svg]]</code> dans la page</li>
-  </ul>
-</p>
+    <li>Ajout pour chaque module d'un régulateur de tension <code>MP1584 12v - 5v</code> pour chaque modules</li>
+    <li>
+        Alimentaion des cartes arduino en direct (pin 5v) sans passer par le régulateur de tension de la carte<br>
+        !! Si utilisation d'un nodemcu, il faudra quand même passer par le régulateur de la carte (en direct un nodemcu s'alimente avec du 3.3V)
+        <ul>
+            <li><i>Les composants des circuits seront branchés sur la sortie 5V du module MP1584 et non sur la carte arduino</i></li>
+            <li><i>Limite plus large du courant (max 500mA pour le régulateur de la carte contre 3A pour le MP1584), plus trop de question à se poser...</i></li>
+        </ul>
+    </li>
+    <li>Voir : <a href="https://riton-duino.blogspot.com/2020/04/arduino-lalimentation.html?m=1" target="_blank">https://riton-duino.blogspot.com/2020/04/arduino-lalimentation.html?m=1</a></li>
+</ul>
             </div>
           </main>
         </div>
@@ -103,8 +51,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/svg-pan-zoom-container"></script>
     <script>
-        const CURRENT_PAGE = 'introduction-documentation';
-        const CURRENT_CATEGORY = 'introduction';
+        const CURRENT_PAGE = 'modules-alimentation';
+        const CURRENT_CATEGORY = 'modules';
     </script>
     <script src="../SvgZoom.js?v=Bwefc"></script><script src="../app.js?v=Bwefc"></script>
 </body>

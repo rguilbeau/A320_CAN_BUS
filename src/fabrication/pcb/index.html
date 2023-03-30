@@ -1,0 +1,179 @@
+<h2>Présentation</h2>
+<p>
+    Les PCB sont fabriqués avec une CNC, <i>à l'anglaise</i>. Les Schémas et les pistes sont modélisés avec EasyEDA.
+    Ils sont ensuite transformés en fichier GCode avec FlatCAM pour ensuite être gravés avec Candle.
+</p>
+<p>
+    La fraise utilisé pour graver ces circuits est la suivante:
+    <ul>
+        <li>Titane Fraise au Carbure Carbone Enduit CNC PCB Gravure Rotatives Fraises (0.8 mm)</li>
+    </ul>
+</p>
+
+<h3>Modélisation</h3>
+<h4>Configuration</h4>
+<p>
+    <table class="table">
+        <tbody>
+            <tr class="text-center bg-light">
+                <th colspan="2">Pads</th>
+            </tr>
+            <tr>
+                <th>Diamètre:</th>
+                <td>1.740mm</td>
+            </tr>
+            <tr>
+                <th>Perçage:</th>
+                <td>0.8mm</td>
+            </tr>
+            <tr>
+                <th>Solder mask expension:</th>
+                <td>0mm</td>
+            </tr>
+            <tr class="text-center bg-light">
+                <th colspan="2">Pistes</th>
+            </tr>
+            <tr>
+                <th>Largeur:</th>
+                <td>1.15</td>
+            </tr>
+            <tr>
+                <th>Espacement minimum</th>
+                <td>0.8mm (diamètre de l'outil)</td>
+            </tr>
+        </tbody>
+    </table>
+</p>
+
+<h4>Génération des fichiers Gerber</h4>
+<p>
+    Afin d'importer le PCB dans FlatCAM, il faut générer les fichier Gerber. Depuis EasyEDA cliquer sur <i>Fabrication > PCB Fabrication File (Gerber)...</i>   
+</p>
+<p>
+    <div class="alert alert-warning" role="alert">
+        Ne pas générer les fichiers gerber depuis le menu exporter, il semblerai qu'il y ai des problèmes d'échelles depuis ce menu.
+    </div>
+</p>
+<p>
+    <div class="alert alert-warning" role="alert">
+        Le point d'origine doit être correctement définit sur 0 dans EasyEDA (en haut à gauche sur 0). FlatCAM se sert de ce
+        point pour générer les déplacements de la CNC.
+    </div>
+</p>
+
+<h3>FlatCAM</h3>
+<h4>Configuration</h4>
+<p>
+    <table class="table">
+        <tbody>
+            <tr class="text-center bg-light">
+                <th colspan="2">Isolation des routes (section Isolation Routing)</th>
+            </tr>
+            <tr>
+                <th>Tool dia:</th>
+                <td>0.8 mm</td>
+            </tr>
+            <tr>
+                <th>Width (#passes):</th>
+                <td>2</td>
+            </tr>
+            <tr>
+                <th>Pass overlap</th>
+                <td>0.4 mm</td>
+            </tr>
+            <tr>
+                <th>Combine Passes</th>
+                <td>OUI</td>
+            </tr>
+            <tr class="text-center bg-light">
+                <th colspan="2">Isolation des routes (section Create CNC Job)</th>
+            </tr>
+            <tr>
+                <th>Cut Z:</th>
+                <td>-0.3 mm</td>
+            </tr>
+            <tr>
+                <th>Travel Z:</th>
+                <td>1.5 mm</td>
+            </tr>
+            <tr>
+                <th>Feed Rate:</th>
+                <td>200 mm/min</td>
+            </tr>
+            <tr>
+                <th>Tool dia:</th>
+                <td>0.8 mm</td>
+            </tr>
+            <tr>
+                <th>Spindle speed</th>
+                <td>10 000 mm/min</td>
+            </tr>
+            <tr class="text-center bg-light">
+                <th colspan="2">Perçage (section Create CNC Job)</th>
+            </tr>
+            <tr>
+                <th>Cut Z:</th>
+                <td>-1.7 mm</td>
+            </tr>
+            <tr>
+                <th>Travel Z:</th>
+                <td>1.5 mm</td>
+            </tr>
+            <tr>
+                <th>Feed rate</th>
+                <td>70 mm/min</td>
+            </tr>
+            <tr>
+                <th>Spindle speed</th>
+                <td>10 000 mm/min</td>
+            </tr>
+            <tr>
+                <th>Tool dia</th>
+                <td>0.8 mm</td>
+            </tr>
+        </tbody>
+    </table>
+</p>
+
+<h4>Instructions</h4>
+
+<p>
+    Voici la procédure pour générer les fichiers GCode pour la fabrication des PCB depuis FlatCAM.
+
+    <ul>
+        <li>
+            Importation des fichiers:<br>
+            <ul>
+                <li>Importer les fichiers des routes (ou de découpe) depuis <strong>File > Open Gerber...</strong></li>
+                <li>Importer les fichiers des trous depuis <strong>File > Open Excellon...</strong></li>
+            </ul>
+        </li>
+        <li>Renommer les fichiers du projet avec des noms plus simple</li>
+        <li>
+            Passer en mode mirroire. Pour chaque fichier du projet, lancer la commande dans la console de FlatCAM:
+            <br>
+            <code>mirror [nom_fichier] -axis Y</code>
+        </li>
+        <li>
+            Génération des routes:<br>
+            <ul>
+                <li>Double-cliquer sur le fichier des routes et configurer les options de la section <strong>Isolation Routing</strong> tel que décrit ci-dessus</li>
+                <li>Cliquer sur Generate geometry</li>
+                <li>Un nouveau fichier (*_iso) est généré dans le projet</li>
+                <li>Double-cliquer sur ce nouveau fichier et configurer les options de la section <strong>Create CNC Job</strong> tel que décrit ci-dessus</li>
+                <li>Cliquer sur Generate</li>
+                <li>Un nouveau fichier (*_iso_cnc) est généré dans le projet</li>
+                <li>Double-cliquer sur ce nouveu fichier et cliquer sur Export G-Code (lui donner un nom avce l'extension .nc)</li>
+            </ul>
+        </li>
+        <li>
+            Génération des trous:<br>
+            <ul>
+                <li>Double-cliquer sur le fichier des trous et configurer les options de la section <strong>Create CNC Job</strong> tel que décrit ci-dessus</li>
+                <li>Cliquer sur Generate</li>
+                <li>Un nouveau fichier (*_cnc) est généré dans le projet</li>
+                <li>Double-cliquer sur ce nouveu fichier et cliquer sur Export G-Code (lui donner un nom avce l'extension .nc)</li>
+            </ul>
+        </li>
+    </ul>
+</p>

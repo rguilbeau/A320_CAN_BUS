@@ -1,0 +1,218 @@
+<html>
+<head>
+    <title>A320 Home cockpit - Fabrication des PCB</title>
+    <meta name="theme-color" content="#0D6EFD">
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="../app.css?v=Bwefc" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row container-row">
+          <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+            <div id="menu" class="position-sticky pt-3">
+                <ul class="list-unstyled ps-0"><li class="mb-1">   <button id="menu-collapse-button-introduction" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#menu-collapse-introduction" aria-expanded="false">Introduction   </button>   <div class="collapse" id="menu-collapse-introduction">       <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">       <li><a data-id="introduction-home" href="introduction-home.html" class="link-dark rounded">A320 Home cockpit</a></li>       <li><a data-id="introduction-environement_dev" href="introduction-environement_dev.html" class="link-dark rounded">Environement de développement</a></li>       <li><a data-id="introduction-documentation" href="introduction-documentation.html" class="link-dark rounded">Maintien Documentation</a></li>       </ul></li><li class="mb-1">   <button id="menu-collapse-button-msfs_communication" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#menu-collapse-msfs_communication" aria-expanded="false">Communication avec MSFS   </button>   <div class="collapse" id="menu-collapse-msfs_communication">       <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">       <li><a data-id="msfs_communication-presentation_globale" href="msfs_communication-presentation_globale.html" class="link-dark rounded">Présentation générale</a></li>       <li><a data-id="msfs_communication-simconnect_presentation" href="msfs_communication-simconnect_presentation.html" class="link-dark rounded">SimConnect et WASM</a></li>       <li><a data-id="msfs_communication-canbus_presentation" href="msfs_communication-canbus_presentation.html" class="link-dark rounded">CAN Bus</a></li>       <li><a data-id="msfs_communication-canbus_message" href="msfs_communication-canbus_message.html" class="link-dark rounded">CAN Bus (messages)</a></li>       </ul></li><li class="mb-1">   <button id="menu-collapse-button-fabrication" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#menu-collapse-fabrication" aria-expanded="false">Fabrication   </button>   <div class="collapse" id="menu-collapse-fabrication">       <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">       <li><a data-id="fabrication-panel" href="fabrication-panel.html" class="link-dark rounded">Façades</a></li>       <li><a data-id="fabrication-pcb" href="fabrication-pcb.html" class="link-dark rounded">Fabrication des PCB</a></li>       </ul></li><li class="mb-1">   <button id="menu-collapse-button-boutons" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#menu-collapse-boutons" aria-expanded="false">Boutons   </button>   <div class="collapse" id="menu-collapse-boutons">       <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">       <li><a data-id="boutons-push_pull_encoder" href="boutons-push_pull_encoder.html" class="link-dark rounded">Push pull encodeur</a></li>       </ul></li><li class="mb-1">   <button id="menu-collapse-button-modules" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#menu-collapse-modules" aria-expanded="false">Modules   </button>   <div class="collapse" id="menu-collapse-modules">       <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">       <li><a data-id="modules-alimentation" href="modules-alimentation.html" class="link-dark rounded">Alimentation électrique</a></li>       <li><a data-id="modules-fcu" href="modules-fcu.html" class="link-dark rounded">FCU</a></li>       <li><a data-id="modules-fcudisplay" href="modules-fcudisplay.html" class="link-dark rounded">FCU Display</a></li>       </ul></li></ul>
+            </div>
+          </nav>
+      
+          <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="pb-5">
+              <div class="bg-light p-5 rounded mt-5 mb-4">
+                <h1 id="title">Fabrication - Fabrication des PCB</h1>
+                <p id="description" class="lead">Détails technique pour la fabrication des PCB du cockpit</p>
+              </div>
+              <h2>Présentation</h2>
+<p>
+    Les PCB sont fabriqués avec une CNC, <i>à l'anglaise</i>. Les Schémas et les pistes sont modélisés avec EasyEDA.
+    Ils sont ensuite transformés en fichier GCode avec FlatCAM pour ensuite être gravés avec Candle.
+</p>
+<p>
+    La fraise utilisé pour graver ces circuits est la suivante:
+    <ul>
+        <li>Titane Fraise au Carbure Carbone Enduit CNC PCB Gravure Rotatives Fraises (0.8 mm)</li>
+    </ul>
+</p>
+
+<h3>Modélisation</h3>
+<h4>Configuration</h4>
+<p>
+    <table class="table">
+        <tbody>
+            <tr class="text-center bg-light">
+                <th colspan="2">Pads</th>
+            </tr>
+            <tr>
+                <th>Diamètre:</th>
+                <td>1.740mm</td>
+            </tr>
+            <tr>
+                <th>Perçage:</th>
+                <td>0.8mm</td>
+            </tr>
+            <tr>
+                <th>Solder mask expension:</th>
+                <td>0mm</td>
+            </tr>
+            <tr class="text-center bg-light">
+                <th colspan="2">Pistes</th>
+            </tr>
+            <tr>
+                <th>Largeur:</th>
+                <td>1.15</td>
+            </tr>
+            <tr>
+                <th>Espacement minimum</th>
+                <td>0.8mm (diamètre de l'outil)</td>
+            </tr>
+        </tbody>
+    </table>
+</p>
+
+<h4>Génération des fichiers Gerber</h4>
+<p>
+    Afin d'importer le PCB dans FlatCAM, il faut générer les fichier Gerber. Depuis EasyEDA cliquer sur <i>Fabrication > PCB Fabrication File (Gerber)...</i>   
+</p>
+<p>
+    <div class="alert alert-warning" role="alert">
+        Ne pas générer les fichiers gerber depuis le menu exporter, il semblerai qu'il y ai des problèmes d'échelles depuis ce menu.
+    </div>
+</p>
+<p>
+    <div class="alert alert-warning" role="alert">
+        Le point d'origine doit être correctement définit sur 0 dans EasyEDA (en haut à gauche sur 0). FlatCAM se sert de ce
+        point pour générer les déplacements de la CNC.
+    </div>
+</p>
+
+<h3>FlatCAM</h3>
+<h4>Configuration</h4>
+<p>
+    <table class="table">
+        <tbody>
+            <tr class="text-center bg-light">
+                <th colspan="2">Isolation des routes (section Isolation Routing)</th>
+            </tr>
+            <tr>
+                <th>Tool dia:</th>
+                <td>0.8 mm</td>
+            </tr>
+            <tr>
+                <th>Width (#passes):</th>
+                <td>2</td>
+            </tr>
+            <tr>
+                <th>Pass overlap</th>
+                <td>0.4 mm</td>
+            </tr>
+            <tr>
+                <th>Combine Passes</th>
+                <td>OUI</td>
+            </tr>
+            <tr class="text-center bg-light">
+                <th colspan="2">Isolation des routes (section Create CNC Job)</th>
+            </tr>
+            <tr>
+                <th>Cut Z:</th>
+                <td>-0.3 mm</td>
+            </tr>
+            <tr>
+                <th>Travel Z:</th>
+                <td>1.5 mm</td>
+            </tr>
+            <tr>
+                <th>Feed Rate:</th>
+                <td>200 mm/min</td>
+            </tr>
+            <tr>
+                <th>Tool dia:</th>
+                <td>0.8 mm</td>
+            </tr>
+            <tr>
+                <th>Spindle speed</th>
+                <td>10 000 mm/min</td>
+            </tr>
+            <tr class="text-center bg-light">
+                <th colspan="2">Perçage (section Create CNC Job)</th>
+            </tr>
+            <tr>
+                <th>Cut Z:</th>
+                <td>-1.7 mm</td>
+            </tr>
+            <tr>
+                <th>Travel Z:</th>
+                <td>1.5 mm</td>
+            </tr>
+            <tr>
+                <th>Feed rate</th>
+                <td>70 mm/min</td>
+            </tr>
+            <tr>
+                <th>Spindle speed</th>
+                <td>10 000 mm/min</td>
+            </tr>
+            <tr>
+                <th>Tool dia</th>
+                <td>0.8 mm</td>
+            </tr>
+        </tbody>
+    </table>
+</p>
+
+<h4>Instructions</h4>
+
+<p>
+    Voici la procédure pour générer les fichiers GCode pour la fabrication des PCB depuis FlatCAM.
+
+    <ul>
+        <li>
+            Importation des fichiers:<br>
+            <ul>
+                <li>Importer les fichiers des routes (ou de découpe) depuis <strong>File > Open Gerber...</strong></li>
+                <li>Importer les fichiers des trous depuis <strong>File > Open Excellon...</strong></li>
+            </ul>
+        </li>
+        <li>Renommer les fichiers du projet avec des noms plus simple</li>
+        <li>
+            Passer en mode mirroire. Pour chaque fichier du projet, lancer la commande dans la console de FlatCAM:
+            <br>
+            <code>mirror [nom_fichier] -axis Y</code>
+        </li>
+        <li>
+            Génération des routes:<br>
+            <ul>
+                <li>Double-cliquer sur le fichier des routes et configurer les options de la section <strong>Isolation Routing</strong> tel que décrit ci-dessus</li>
+                <li>Cliquer sur Generate geometry</li>
+                <li>Un nouveau fichier (*_iso) est généré dans le projet</li>
+                <li>Double-cliquer sur ce nouveau fichier et configurer les options de la section <strong>Create CNC Job</strong> tel que décrit ci-dessus</li>
+                <li>Cliquer sur Generate</li>
+                <li>Un nouveau fichier (*_iso_cnc) est généré dans le projet</li>
+                <li>Double-cliquer sur ce nouveu fichier et cliquer sur Export G-Code (lui donner un nom avce l'extension .nc)</li>
+            </ul>
+        </li>
+        <li>
+            Génération des trous:<br>
+            <ul>
+                <li>Double-cliquer sur le fichier des trous et configurer les options de la section <strong>Create CNC Job</strong> tel que décrit ci-dessus</li>
+                <li>Cliquer sur Generate</li>
+                <li>Un nouveau fichier (*_cnc) est généré dans le projet</li>
+                <li>Double-cliquer sur ce nouveu fichier et cliquer sur Export G-Code (lui donner un nom avce l'extension .nc)</li>
+            </ul>
+        </li>
+    </ul>
+</p>
+            </div>
+          </main>
+        </div>
+      </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/svg-pan-zoom-container"></script>
+    <script>
+        const CURRENT_PAGE = 'fabrication-pcb';
+        const CURRENT_CATEGORY = 'fabrication';
+    </script>
+    <script src="../SvgZoom.js?v=Bwefc"></script><script src="../app.js?v=Bwefc"></script>
+</body>
+</html>

@@ -6,6 +6,7 @@ nav:
       home:
         title: A320 Home cockpit
         description: Documentation technique du fonctionnement de la reproduction du cockpit A320
+      
       environement_dev:
         title: Environement de développement
         description: Outils à installer pour le développement et la maintenance
@@ -39,9 +40,9 @@ nav:
           title: Façades
           description: Détails technique de la fabrication et la découpe des façades des modules
           
-        alimentation:
-          title: Alimentation électrique
-          description: Vue générale de l'alimentation électrique du cockpit
+        pcb:
+          title: Fabrication des PCB
+          description: Détails technique pour la fabrication des PCB du cockpit
 
   boutons:
     title: Boutons
@@ -53,6 +54,10 @@ nav:
   modules:
     title: Modules
     pages:
+      alimentation:
+        title: Alimentation électrique
+        description: Vue générale de l'alimentation des modules du Cockpit
+
       fcu:
         title: FCU
         description: Détails technique du module FCU (sans afficheurs)
