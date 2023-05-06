@@ -1,6 +1,93 @@
 var CANBUS_FRAMES = [
     {
-        id : "0x064",
+        id : "0x000",
+        title: 'Cockpit event',
+        description: "Tous les évenements du cockpit (bouton appuyé, switch, bouton rotatif). Ils sont tous envoyés via la frame 0x000, et l'id de l'evenement se trouve dans la frame.",
+        size : 7,
+        bits: [
+            {
+                value: 'IIIIIIII IIIIIIII ',
+                info : ["L'id de l'evenement"]
+            },
+            {
+                value: 'VVVVVVVV VVVVVVVV VVVVVVVV VVVVVVVV VVVVVVVV ',
+                info : ["La valeur de l'evenement en float"]
+            },
+        ]
+    },
+    {
+        id : "0x010",
+        title: 'Ping',
+        description: "Frame de ping, permet de forcer les modules du cockpit, à envoyer leurs informations même si elles n'ont pas été modifiées",
+        size : 1,
+        bits: [
+            {
+                value: 'RRRRRRRR ',
+                info : ["Valeur random (0x00 à 0xFF)"]
+            }
+        ]
+    },
+    {
+        id : "0x020",
+        title: 'Brightness panel',
+        description: "Rétroaiclairage des panels",
+        size : 5,
+        bits: [
+            {
+                value: 'GGGGGGGG ',
+                info : ["Rétroaiclairage du glareshield (0 à 255)"]
+            },
+            {
+                value: 'OOOOOOOO ',
+                info: ["Rétroaiclairage de l'overhead panel (0 à 255)"]
+            },
+            {
+                value : "PPPPPPPP ",
+                info : ["Rétroaiclairage du pedestale (0 à 255)"]
+            },
+            {
+                value : "IIIIIIII ",
+                info : ["Rétroaiclairage des témoins des boutons (0 à 255)"]
+            },
+            {
+                value : "BBBBBBBB ",
+                info : ["Rétroaiclairage des boutons (0 à 255)"]
+            }
+        ]
+    },
+    {
+        id : "0x030",
+        title: 'Sevent segment brightness',
+        description: "Le rétroaiclaire des écrans 7 segments",
+        size : 5,
+        bits: [
+            {
+                value: 'T',
+                info : [
+                    "Les lumières du cockpit sont en mode \"test\"",
+                    "1 - actif, 0 - inactif"
+                ]
+            },
+            {
+                value: '0000000 ',
+                info: []
+            },
+            {
+                value: 'AAAAAAAA ',
+                info : ["Rétroaiclairage des altimètres (0 à 255)"]
+            },
+            {
+                value: 'BBBBBBBB ',
+                info : ["Rétroaiclairage de l'afficheur de la tension des batteries (0 à 255)"]
+            },
+            {
+                value: 'RRRRRRRR ',
+                info : ["Rétroaiclairage de la fréquence des radios (0 à 255)"]
+            },
+        ]
+    },
+    {
+        id : "0x011",
         title: 'FCU Display',
         description: "Informations relatives à l'afficheur du FCU",
         size : 8,
@@ -9,7 +96,7 @@ var CANBUS_FRAMES = [
                 value : "SSSSSSSS ",
                 info : [
                     "Les dizaines de la vitesse, pour une vitesse de 250 la valeur sera 50",
-                    "Si MACH, vitesse / 100"
+                    "Si MACH, SSSSSSSS + (sssss) / 100"
                 ]
             },
             {
@@ -17,23 +104,23 @@ var CANBUS_FRAMES = [
                 info: ["Les dizaines du cap, pour cap au 320 la valeur sera 20"]
             },
             {
-                value: 'SSSSS',
+                value: 'sssss',
                 info: [
                     "Les centaines de la vitesse",
-                    '10000 - SSSSSSSS + 100 knots',
-                    '01000 - SSSSSSSS + 200 knots',
-                    '00100 - SSSSSSSS + 300 knots',
-                    '00010 - SSSSSSSS + 400 knots',
-                    '00001 - SSSSSSSS + 500 knots'
+                    '10000 - (SSSSSSSS + 100 knots)',
+                    '01000 - (SSSSSSSS + 200 knots)',
+                    '00100 - (SSSSSSSS + 300 knots)',
+                    '00010 - (SSSSSSSS + 400 knots)',
+                    '00001 - (SSSSSSSS + 500 knots)'
                 ]
             },
             {
-                value: 'HHH ',
+                value: 'hhh ',
                 info: [
                     "Les centaines du cap",
-                    '100 - HHHHHHHH + 100°',
-                    '010 - HHHHHHHH + 200°',
-                    '001 - HHHHHHHH + 300°'
+                    '100 - (HHHHHHHH + 100°)',
+                    '010 - (HHHHHHHH + 200°)',
+                    '001 - (HHHHHHHH + 300°)'
                 ]
             },
             {
@@ -103,10 +190,10 @@ var CANBUS_FRAMES = [
         ]
     },
     {
-        id : "0x065",
-        title: 'FCU',
-        description: "Information liées aux FCU",
-        size : 4,
+        id : "0x021",
+        title: 'Glareshield indicators',
+        description: "Les témoins des boutons des panels du glareshield",
+        size : 1,
         bits: [
             {
                 value: 'A',
@@ -147,69 +234,7 @@ var CANBUS_FRAMES = [
             {
                 value: '00 ',
                 info : []
-            },
-            {
-                value : "DDDDDDDD ",
-                info : [
-                    "Rétroéclairage des écrans du FCU (de 0 à 255)"
-                ]
-            },
-            {
-                value : "BBBBBBBB ",
-                info : [
-                    "Rétroéclairage des boutons du FCU (de 0 à 255)"
-                ]
-            },
-            {
-                value : "PPPPPPPP ",
-                info : [
-                    "Rétroéclairage du panel du FCU (de 0 à 255)"
-                ]
-            },
-        ]
-    },
-    {
-        id : "0x0C8",
-        title: 'Backlight global',
-        description: "Rétroaiclairage / lumière indicateurs",
-        size : 2,
-        bits: [
-            {
-                value: 'T',
-                info : [
-                    "Tests des lumières d'indicateurs, allume toutes les LED des boutons et des afficheurs",
-                    "0 - inactif, 1 - actif"
-                ]
-            },
-            {
-                value: '0000000 ',
-                info: ["Inutilisé"]
-            },
-            {
-                value : "TTTTTTTT ",
-                info : [
-                    "Rétroéclairage des témoins des boutons (de 0 à 255)"
-                ]
-            },
-        ]
-    },
-    {
-        id : "0x12C",
-        title: 'Electricité',
-        description: "Infomrations liées aux bus éléctrique",
-        size : 2,
-        bits: [
-            {
-                value: 'B',
-                info : [
-                    "Alimentation électrique du Bus AC 1",
-                    "1 - allimenté, 0 - inactif"
-                ]
-            },
-            {
-                value: '0000000 ',
-                info: ["Inutilisé"]
-            },
+            }
         ]
     }
 ];
